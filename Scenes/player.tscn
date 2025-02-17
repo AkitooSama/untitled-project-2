@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=6 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_djt3e"]
 [ext_resource type="Texture2D" uid="uid://cgissyx5hfkek" path="res://Sprites/icon.svg" id="2_c1yx0"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="3_7jhp6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgeqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6w7"]
+size = Vector2(33, 84)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_djt3e")
@@ -16,7 +20,9 @@ shape = SubResource("CapsuleShape2D_bgeqj")
 scale = Vector2(0.5, 0.7)
 texture = ExtResource("2_c1yx0")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(44, 0)
-collision_layer = 2
-collision_mask = 0
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_7jhp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(54.5, 0)
+shape = SubResource("RectangleShape2D_fs6w7")

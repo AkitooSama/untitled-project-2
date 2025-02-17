@@ -1,8 +1,7 @@
 class_name HitBox
 extends Area2D
 
-var damage := 10
-
+@export var damage := 10
 
 func _init() -> void:
 	collision_layer = 2
