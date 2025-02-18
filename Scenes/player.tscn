@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=32 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Texture2D" uid="uid://bbp71vkr1jk26" path="res://Sprites/knight.png" id="2_2y2ji"]
 [ext_resource type="Script" path="res://Scripts/HitBox.gd" id="3_7jhp6"]
 [ext_resource type="AudioStream" uid="uid://h2xe0lejqh7g" path="res://Sounds/jump.wav" id="4_ofewu"]
 [ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="4_ypiq1"]
+[ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://Sounds/explosion.wav" id="5_7x0et"]
 
 [sub_resource type="GDScript" id="GDScript_yv4jv"]
 script/source = "extends CharacterBody2D
@@ -278,6 +279,11 @@ debug_color = Color(1, 1, 1, 0.42)
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("4_ofewu")
+bus = &"SFX"
+
+[node name="DyingSound" type="AudioStreamPlayer2D" parent="SFX"]
+position = Vector2(0, -56)
+stream = ExtResource("5_7x0et")
 bus = &"SFX"
 
 [connection signal="area_entered" from="DeebuggerRange" to="." method="_on_deebugger_range_area_entered"]

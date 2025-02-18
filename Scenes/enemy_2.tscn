@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg1hcbwhopbub"]
+[gd_scene load_steps=12 format=3 uid="uid://cg1hcbwhopbub"]
 
 [ext_resource type="Texture2D" uid="uid://g2vmprysmhhe" path="res://Sprites/slime_purple.png" id="1_dn316"]
-[ext_resource type="PackedScene" uid="uid://bwm6xhhfdtc8h" path="res://Scenes/killzone.tscn" id="2_33oj8"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="2_ctd4b"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_1ooe5"]
 [ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://Sounds/explosion.wav" id="3_i5o2g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mhtl"]
@@ -40,8 +41,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw4y4"]
-size = Vector2(12, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rldgc"]
+size = Vector2(12, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upjr2"]
+size = Vector2(12, 8)
 
 [node name="enemy2" type="Node2D"]
 
@@ -50,16 +54,23 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_1pym3")
 autoplay = "default"
 
-[node name="killzone" parent="AnimatedSprite2D" instance=ExtResource("2_33oj8")]
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("2_ctd4b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/killzone"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_yw4y4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_rldgc")
+debug_color = Color(0.98899, 0, 0.295688, 0.42)
 
-[node name="DyingSound" type="AudioStreamPlayer2D" parent="AnimatedSprite2D/killzone"]
-position = Vector2(0, -56)
-stream = ExtResource("3_i5o2g")
-bus = &"SFX"
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_1ooe5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_upjr2")
+debug_color = Color(0.664868, 0.512089, 0, 0.42)
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -68,3 +79,8 @@ target_position = Vector2(8, 0)
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 target_position = Vector2(-8, 0)
+
+[node name="DyingSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -68)
+stream = ExtResource("3_i5o2g")
+bus = &"SFX"

@@ -1,16 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://jvvl48wutsoi"]
+[gd_scene load_steps=16 format=3 uid="uid://jvvl48wutsoi"]
 
 [ext_resource type="PackedScene" uid="uid://cbh8xd1dph6or" path="res://Scenes/player.tscn" id="1_4g66l"]
 [ext_resource type="FontFile" uid="uid://dhx86ubdfg1bl" path="res://Fonts/PixelOperator8.ttf" id="1_g0vtp"]
 [ext_resource type="Texture2D" uid="uid://76pxd42yjo3f" path="res://Sprites/world_tileset.png" id="1_ohv1w"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_otam5"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="2_x83if"]
 [ext_resource type="PackedScene" uid="uid://b47u6pnquo03t" path="res://Scenes/platform.tscn" id="4_iiga8"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="5_3i3mr"]
 [ext_resource type="PackedScene" uid="uid://dab0f16t638cr" path="res://Scenes/coin.tscn" id="5_448u5"]
-[ext_resource type="PackedScene" uid="uid://bwm6xhhfdtc8h" path="res://Scenes/killzone.tscn" id="6_mgf3x"]
 [ext_resource type="PackedScene" uid="uid://cg1hcbwhopbub" path="res://Scenes/enemy_2.tscn" id="7_6a4ya"]
 [ext_resource type="Script" path="res://Scripts/enemy_2.gd" id="8_dlt50"]
-[ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://Sounds/explosion.wav" id="11_8f32k"]
+[ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://Scenes/pressure_plate.tscn" id="10_aoc3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0blh"]
 texture = ExtResource("1_ohv1w")
@@ -174,8 +173,6 @@ texture = ExtResource("1_ohv1w")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p0blh")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7vmoi"]
-
 [sub_resource type="Animation" id="Animation_m10s1"]
 length = 0.001
 tracks/0/type = "value"
@@ -242,24 +239,13 @@ layer_1/tile_data = PackedInt32Array(65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0
 
 [node name="Player" parent="." instance=ExtResource("1_4g66l")]
 position = Vector2(-54, -8)
-script = ExtResource("2_x83if")
+script = ExtResource("5_3i3mr")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -7)
 zoom = Vector2(3, 3)
 limit_bottom = 50
 limit_smoothed = true
-
-[node name="killzone" parent="." instance=ExtResource("6_mgf3x")]
-position = Vector2(0, 56)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-shape = SubResource("WorldBoundaryShape2D_7vmoi")
-
-[node name="DyingSound" type="AudioStreamPlayer2D" parent="killzone"]
-position = Vector2(0, -56)
-stream = ExtResource("11_8f32k")
-bus = &"SFX"
 
 [node name="coins" type="Node" parent="."]
 
@@ -325,3 +311,6 @@ autoplay = "move"
 [node name="enemy2" parent="." instance=ExtResource("7_6a4ya")]
 position = Vector2(279, 0)
 script = ExtResource("8_dlt50")
+
+[node name="PressurePlate" parent="." instance=ExtResource("10_aoc3h")]
+position = Vector2(147, 11)
