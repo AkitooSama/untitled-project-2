@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jvvl48wutsoi"]
 
 [ext_resource type="PackedScene" uid="uid://cbh8xd1dph6or" path="res://Scenes/player.tscn" id="1_4g66l"]
-[ext_resource type="PackedScene" uid="uid://6ctuull8erp1" path="res://enemy.tscn" id="2_yyia8"]
+[ext_resource type="PackedScene" uid="uid://bmk7xhe1e6ylt" path="res://Scenes/pressure_plate.tscn" id="2_lobdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7vju"]
 size = Vector2(664, 31)
@@ -25,7 +25,9 @@ scale = Vector2(0.320002, 1)
 shape = SubResource("RectangleShape2D_v7vju")
 
 [node name="Player" parent="." instance=ExtResource("1_4g66l")]
-position = Vector2(517, 532)
+position = Vector2(670, 491)
 
-[node name="Enemy" parent="." instance=ExtResource("2_yyia8")]
-position = Vector2(975, 483)
+[node name="PressurePlate" parent="." instance=ExtResource("2_lobdl")]
+position = Vector2(235, 602)
+
+[connection signal="area_exited" from="PressurePlate" to="Player" method="_on_pressure_plate_area_exited"]

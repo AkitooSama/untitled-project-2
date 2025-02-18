@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=9 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_djt3e"]
 [ext_resource type="Texture2D" uid="uid://cgissyx5hfkek" path="res://Sprites/icon.svg" id="2_c1yx0"]
 [ext_resource type="Script" path="res://Scripts/HitBox.gd" id="3_7jhp6"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="4_ypiq1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgeqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6w7"]
 size = Vector2(33, 84)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_111ev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7der4"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Deebugger_Detecter")]
 script = ExtResource("1_djt3e")
+Deebugger_Detecter = NodePath("DeebuggerRange")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)
@@ -21,8 +27,29 @@ scale = Vector2(0.5, 0.7)
 texture = ExtResource("2_c1yx0")
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
 script = ExtResource("3_7jhp6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(54.5, 0)
 shape = SubResource("RectangleShape2D_fs6w7")
+debug_color = Color(0.97287, 0, 0.438018, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("4_ypiq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(3.6, 3.6)
+shape = SubResource("CapsuleShape2D_111ev")
+debug_color = Color(0.542108, 0.566777, 0, 0.42)
+
+[node name="DeebuggerRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeebuggerRange"]
+scale = Vector2(18, 18)
+shape = SubResource("CircleShape2D_7der4")
+
+[connection signal="area_entered" from="DeebuggerRange" to="." method="_on_deebugger_range_area_entered"]

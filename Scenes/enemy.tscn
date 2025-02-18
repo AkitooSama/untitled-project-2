@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ctuull8erp1"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mw61o"]
+[ext_resource type="Texture2D" uid="uid://cgissyx5hfkek" path="res://Sprites/icon.svg" id="2_pfkid"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_6nwc1"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="4_7wfm6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uwb42"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uub8c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wifd"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_mw61o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.7)
+texture = ExtResource("2_pfkid")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("4_7wfm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+scale = Vector2(3.6, 3.6)
+shape = SubResource("CapsuleShape2D_uwb42")
+debug_color = Color(0.963526, 5.77569e-07, 0.498196, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_6nwc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CapsuleShape2D_uub8c")
+debug_color = Color(0.505325, 0.579553, 3.85046e-07, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_5wifd")
