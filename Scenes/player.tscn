@@ -53,3 +53,4 @@ scale = Vector2(18, 18)
 shape = SubResource("CircleShape2D_7der4")
 
 [connection signal="area_entered" from="DeebuggerRange" to="." method="_on_deebugger_range_area_entered"]
+[connection signal="area_exited" from="DeebuggerRange" to="." method="_on_deebugger_range_area_exited"]

@@ -19,15 +19,15 @@ func _physics_process(delta: float) -> void:
 		pass
 		#>play animation that enables hitbox, then disables it at the end
 
+	if Input.is_action_just_pressed("Deebug"):
+		print(DeebugObjList)
+
 	# Gets the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	#print(DeebugObjList)
-	#testing ^
 
 	move_and_slide()
 
@@ -39,9 +39,7 @@ func take_damage(amount: int) -> void:
 
 func _on_deebugger_range_area_entered(area: Area2D) -> void:
 	DeebugObjList.append(area)
-	print(area)
 
 
-func _on_pressure_plate_area_exited(area: Area2D) -> void:
+func _on_deebugger_range_area_exited(area: Area2D) -> void:
 	DeebugObjList.erase(area)
-	print(area)
