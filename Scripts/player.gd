@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 @export var Deebugger_Detecter: Area2D
+@export var prompt: CanvasLayer
+@export var prompt_txt: TextEdit
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var deebug_mode = false
 
-var DeebugObjList = []
+var deebugObjList = []
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sound: AudioStreamPlayer2D = $SFX/JumpSound
@@ -28,8 +31,16 @@ func _physics_process(delta: float) -> void:
 		# Play animation that enables hitbox, then disables it at the end
 
 	# Debugger
-	if Input.is_action_just_pressed("Deebug"):
-		print(DeebugObjList)
+	if Input.is_action_just_pressed("Deebug") && deebug_mode == false:
+		deebug_mode = true
+		prompt.show()
+		var list_length = deebugObjList.size()
+		for i in list_length:
+			prompt_txt.text += str(deebugObjList[i - 1], "\n")
+	elif Input.is_action_just_pressed("Deebug") && deebug_mode == true:
+		deebug_mode = false
+		prompt.hide()
+		prompt_txt.text = ""
 
 	# Movement & Animation Handling
 	var direction := Input.get_axis("Left", "Right")
@@ -63,7 +74,7 @@ func take_damage(amount: int) -> void:
 
 # Debugger Functions
 func _on_deebugger_range_area_entered(area: Area2D) -> void:
-	DeebugObjList.append(area)
+	deebugObjList.append(area.codable_vars)
 
 func _on_deebugger_range_area_exited(area: Area2D) -> void:
-	DeebugObjList.erase(area)
+	deebugObjList.erase(area.codable_vars)
