@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=37 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_c52qp"]
 [ext_resource type="Texture2D" uid="uid://bbp71vkr1jk26" path="res://sprites/knight.png" id="2_2y2ji"]
@@ -180,9 +180,6 @@ height = 5.33333
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6w7"]
 size = Vector2(3.25, 11.25)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7der4"]
-radius = 1.27899
-
 [sub_resource type="Gradient" id="Gradient_0i13n"]
 offsets = PackedFloat32Array(0, 0.360656, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.573771, 0.573771, 0.573771, 1, 0, 0, 0, 1)
@@ -240,16 +237,6 @@ scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_rpiqq")
 debug_color = Color(0.992642, 0, 0.249152, 0.42)
 
-[node name="DeebuggerRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeebuggerRange"]
-position = Vector2(1, -8)
-scale = Vector2(18, 18)
-shape = SubResource("CircleShape2D_7der4")
-debug_color = Color(1, 1, 1, 0.42)
-
 [node name="SFX" type="Node" parent="."]
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="SFX"]
@@ -271,6 +258,3 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_tgfc7")
 lifetime = 0.5
 one_shot = true
-
-[connection signal="area_entered" from="DeebuggerRange" to="." method="_on_deebugger_range_area_entered"]
-[connection signal="area_exited" from="DeebuggerRange" to="." method="_on_deebugger_range_area_exited"]
