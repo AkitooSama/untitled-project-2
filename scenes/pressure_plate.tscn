@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtqwi5igc4dcj"]
+[gd_scene load_steps=7 format=3 uid="uid://dtqwi5igc4dcj"]
 
-[ext_resource type="Texture2D" uid="uid://cgissyx5hfkek" path="res://sprites/icon.svg" id="1_ob6ka"]
 [ext_resource type="Script" path="res://scripts/pressure_plate.gd" id="1_ymn6x"]
+[ext_resource type="Texture2D" uid="uid://bil6l3e1ivwmx" path="res://sprites/platforms.png" id="2_3adbl"]
+[ext_resource type="AudioStream" uid="uid://dcioeoiwmg5qf" path="res://sounds/landing.ogg" id="3_n7k1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3jxn"]
-size = Vector2(6, 6)
+size = Vector2(3.5, 6)
+
+[sub_resource type="Gradient" id="Gradient_cf230"]
+offsets = PackedFloat32Array(0, 0.993506)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pv1x4"]
+gradient = SubResource("Gradient_cf230")
+fill = 1
+fill_from = Vector2(0.486239, 0.449541)
+fill_to = Vector2(0.733945, 0.0412844)
 
 [node name="PressurePlate" type="Area2D"]
 collision_layer = 9
@@ -14,10 +25,23 @@ script = ExtResource("1_ymn6x")
 scale = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_c3jxn")
 
-[node name="PlaceHolderSprite" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.2, 0.05)
-texture = ExtResource("1_ob6ka")
+[node name="PressurePlateSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.666667)
+texture = ExtResource("2_3adbl")
+region_enabled = true
+region_rect = Rect2(-0.0643129, 47.9888, 15.9701, 9.40227)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.21875, 0.09375)
+enabled = false
+texture = SubResource("GradientTexture2D_pv1x4")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_n7k1j")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

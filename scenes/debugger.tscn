@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2of67pys72vi"]
+
+[ext_resource type="Script" path="res://scripts/debugger.gd" id="1_7emwp"]
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_b4vn0"]
+[ext_resource type="FontFile" uid="uid://dhx86ubdfg1bl" path="res://fonts/PixelOperator8.ttf" id="3_6sdr0"]
+[ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://sounds/explosion.wav" id="3_spb2s"]
+[ext_resource type="AudioStream" uid="uid://c36nyerbhy41i" path="res://sounds/boxopen.ogg" id="3_y8740"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16v64"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjydg"]
+shader = ExtResource("2_b4vn0")
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/distortion_strength = 0.005
+shader_parameter/noise_intensity = 0.2
+shader_parameter/color_boost = Vector3(1.1, 1.05, 1.2)
+
+[sub_resource type="Gradient" id="Gradient_tlhce"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ixa03"]
+gradient = SubResource("Gradient_tlhce")
+
+[node name="Debugger" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_7emwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_16v64")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_mjydg")
+offset_right = 1922.0
+offset_bottom = 518.0
+color = Color(0, 0.180392, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/ColorRect"]
+position = Vector2(960.5, 156)
+scale = Vector2(29.9844, 4.65625)
+color = Color(3.51354e-06, 0.509346, 0.171578, 1)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_ixa03")
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_right = 1925.0
+offset_bottom = 518.0
+theme_override_fonts/font = ExtResource("3_6sdr0")
+theme_override_font_sizes/font_size = 40
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="TypingSound" type="AudioStreamPlayer2D" parent="SFX"]
+bus = &"SFX"
+
+[node name="EnterSound" type="AudioStreamPlayer2D" parent="SFX"]
+position = Vector2(0, -56)
+stream = ExtResource("3_spb2s")
+bus = &"SFX"
+
+[node name="OpenDebuggerSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_y8740")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

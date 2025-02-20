@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://jvvl48wutsoi"]
+[gd_scene load_steps=17 format=3 uid="uid://jvvl48wutsoi"]
 
 [ext_resource type="PackedScene" uid="uid://cbh8xd1dph6or" path="res://scenes/player.tscn" id="1_4g66l"]
 [ext_resource type="FontFile" uid="uid://dhx86ubdfg1bl" path="res://fonts/PixelOperator8.ttf" id="1_g0vtp"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_otam5"]
 [ext_resource type="PackedScene" uid="uid://b47u6pnquo03t" path="res://scenes/platform.tscn" id="4_iiga8"]
 [ext_resource type="PackedScene" uid="uid://dab0f16t638cr" path="res://scenes/coin.tscn" id="5_448u5"]
+[ext_resource type="PackedScene" uid="uid://b2of67pys72vi" path="res://scenes/debugger.tscn" id="7_2hj1t"]
 [ext_resource type="PackedScene" uid="uid://cg1hcbwhopbub" path="res://scenes/enemy_2.tscn" id="7_6a4ya"]
 [ext_resource type="Script" path="res://scripts/enemy_2.gd" id="8_dlt50"]
+[ext_resource type="PackedScene" uid="uid://cy1xk0s30t03n" path="res://scenes/torch.tscn" id="8_spc3t"]
 [ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://scenes/pressure_plate.tscn" id="10_aoc3h"]
+[ext_resource type="PackedScene" uid="uid://rgxdyndyorla" path="res://scenes/moving_platform.tscn" id="12_2la5w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0blh"]
 texture = ExtResource("1_ohv1w")
@@ -173,7 +176,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p0blh")
 
 [sub_resource type="Gradient" id="Gradient_43yaw"]
-offsets = PackedFloat32Array(0, 0.0454545, 1)
+offsets = PackedFloat32Array(0, 0.00649351, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.857143, 0.857143, 0.857143, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ts2jc"]
@@ -181,62 +184,6 @@ gradient = SubResource("Gradient_43yaw")
 fill = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(1, 0.137615)
-
-[sub_resource type="Animation" id="Animation_m10s1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(656, 5)]
-}
-
-[sub_resource type="Animation" id="Animation_nx4ux"]
-resource_name = "move"
-length = 1.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(656, 5), Vector2(799, 5)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4lv2"]
-_data = {
-"RESET": SubResource("Animation_m10s1"),
-"move": SubResource("Animation_nx4ux")
-}
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_jeivi"]
-vertices = PackedVector2Array(923, -15.8125, -135.398, 3.8125, -140.602, -126.219, 923, -149.773)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-151, -136, 933, -160, 933, -6, -145, 14)])
-source_geometry_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_wjp7n"]
-offsets = PackedFloat32Array(0, 0.00649351, 0.987013, 1)
-colors = PackedColorArray(0.771429, 0.771429, 0.771429, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0.0530303, 0.0530303, 0.0530303, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kohnf"]
-gradient = SubResource("Gradient_wjp7n")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.766055, 0.288991)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vyodj"]
 
 [node name="Main" type="Node2D"]
 
@@ -330,58 +277,33 @@ position = Vector2(407, -119)
 [node name="Platform5" parent="GameManager/Level/Platforms" instance=ExtResource("4_iiga8")]
 position = Vector2(608, -99)
 
-[node name="Platform6" parent="GameManager/Level/Platforms" instance=ExtResource("4_iiga8")]
-position = Vector2(656, 5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager/Level/Platforms/Platform6"]
-libraries = {
-"": SubResource("AnimationLibrary_x4lv2")
-}
-autoplay = "move"
-
 [node name="Players" type="Node2D" parent="GameManager/Level"]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="GameManager/Level/Players"]
-navigation_polygon = SubResource("NavigationPolygon_jeivi")
-navigation_layers = 63
-
-[node name="PlayerOne" parent="GameManager/Level/Players/NavigationRegion2D" node_paths=PackedStringArray("follow_target", "Deebugger_Detecter", "prompt", "prompt_txt") instance=ExtResource("1_4g66l")]
-position = Vector2(-54, -8)
+[node name="PlayerOne" parent="GameManager/Level/Players" node_paths=PackedStringArray("follow_target") instance=ExtResource("1_4g66l")]
+position = Vector2(-16, -4)
 follow_target = NodePath("../PlayerTwo")
-Deebugger_Detecter = NodePath("../../../DeebuggerArea")
-prompt = NodePath("../../../../../World/CanvasLayer")
-prompt_txt = NodePath("../../../../../World/CanvasLayer/TextEdit")
 
-[node name="Camera2D" type="Camera2D" parent="GameManager/Level/Players/NavigationRegion2D/PlayerOne"]
+[node name="Camera2D" type="Camera2D" parent="GameManager/Level/Players/PlayerOne"]
 position = Vector2(1, -7)
 zoom = Vector2(3, 3)
 limit_bottom = 50
 limit_smoothed = true
 
-[node name="PlayerTwo" parent="GameManager/Level/Players/NavigationRegion2D" node_paths=PackedStringArray("follow_target", "Deebugger_Detecter", "prompt", "prompt_txt") instance=ExtResource("1_4g66l")]
+[node name="Debugger" parent="GameManager/Level/Players/PlayerOne" node_paths=PackedStringArray("player") instance=ExtResource("7_2hj1t")]
+player = NodePath("..")
+
+[node name="PlayerTwo" parent="GameManager/Level/Players" node_paths=PackedStringArray("follow_target") instance=ExtResource("1_4g66l")]
 follow_target = NodePath("../PlayerOne")
 is_following = true
-Deebugger_Detecter = NodePath("../../../DeebuggerArea")
-prompt = NodePath("../../../../../World/CanvasLayer")
-prompt_txt = NodePath("../../../../../World/CanvasLayer/TextEdit")
 
-[node name="Camera2D" type="Camera2D" parent="GameManager/Level/Players/NavigationRegion2D/PlayerTwo"]
+[node name="Camera2D" type="Camera2D" parent="GameManager/Level/Players/PlayerTwo"]
 position = Vector2(1, -7)
 zoom = Vector2(3, 3)
 limit_bottom = 50
 limit_smoothed = true
 
-[node name="PointLight2D" type="PointLight2D" parent="GameManager/Level/Players/NavigationRegion2D/PlayerTwo"]
-position = Vector2(1, -8)
-scale = Vector2(2.0625, 1.84375)
-color = Color(0.710757, 0.583475, 0.164195, 1)
-energy = 2.6
-blend_mode = 2
-range_z_min = -4096
-range_z_max = 4096
-range_item_cull_mask = 7
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_kohnf")
+[node name="Torch" parent="GameManager/Level/Players/PlayerTwo" instance=ExtResource("8_spc3t")]
+base_scale = 2.0
 
 [node name="Enemies" type="Node2D" parent="GameManager/Level"]
 
@@ -397,13 +319,8 @@ position = Vector2(200, -1)
 [node name="PressurePlate2" parent="GameManager/Level/Interactables" instance=ExtResource("10_aoc3h")]
 position = Vector2(151, 0)
 
-[node name="DeebuggerArea" type="Area2D" parent="GameManager/Level"]
-position = Vector2(95, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/Level/DeebuggerArea"]
-position = Vector2(-94, -8)
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_vyodj")
+[node name="MovingPlatform" parent="GameManager/Level/Interactables" instance=ExtResource("12_2la5w")]
+collision_layer = 9
 
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 position = Vector2(1, -7)
@@ -412,16 +329,3 @@ limit_bottom = 50
 limit_smoothed = true
 
 [node name="World" type="Node2D" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="World"]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="World/CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 311.0
-color = Color(0, 0.178807, 3.60981e-08, 1)
-
-[node name="TextEdit" type="TextEdit" parent="World/CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 311.0
-theme_override_font_sizes/font_size = 40

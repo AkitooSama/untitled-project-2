@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=38 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_c52qp"]
 [ext_resource type="Texture2D" uid="uid://bbp71vkr1jk26" path="res://sprites/knight.png" id="2_2y2ji"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://h2xe0lejqh7g" path="res://sounds/jump.wav" id="4_ofewu"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="4_ypiq1"]
 [ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://sounds/explosion.wav" id="5_7x0et"]
+[ext_resource type="AudioStream" uid="uid://maqy81v6t3vw" path="res://sounds/steps_platform.ogg" id="7_5ss1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfmd7"]
 atlas = ExtResource("2_2y2ji")
@@ -182,6 +183,28 @@ size = Vector2(3.25, 11.25)
 [sub_resource type="CircleShape2D" id="CircleShape2D_7der4"]
 radius = 1.27899
 
+[sub_resource type="Gradient" id="Gradient_0i13n"]
+offsets = PackedFloat32Array(0, 0.360656, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.573771, 0.573771, 0.573771, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_flbsc"]
+gradient = SubResource("Gradient_0i13n")
+
+[sub_resource type="Curve" id="Curve_2q6r3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xyteh"]
+curve = SubResource("Curve_2q6r3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tgfc7"]
+particle_flag_disable_z = true
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 50, 0)
+scale_curve = SubResource("CurveTexture_xyteh")
+color_ramp = SubResource("GradientTexture1D_flbsc")
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -238,8 +261,16 @@ position = Vector2(0, -56)
 stream = ExtResource("5_7x0et")
 bus = &"SFX"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-navigation_layers = 255
+[node name="FootStepSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_5ss1o")
+bus = &"SFX"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_tgfc7")
+lifetime = 0.5
+one_shot = true
 
 [connection signal="area_entered" from="DeebuggerRange" to="." method="_on_deebugger_range_area_entered"]
 [connection signal="area_exited" from="DeebuggerRange" to="." method="_on_deebugger_range_area_exited"]

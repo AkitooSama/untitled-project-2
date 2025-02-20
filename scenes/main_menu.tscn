@@ -1,0 +1,201 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwix503rmqj8w"]
+
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="1_5riud"]
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="1_i8a48"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_x6dsr"]
+[ext_resource type="FontFile" uid="uid://dhx86ubdfg1bl" path="res://fonts/PixelOperator8.ttf" id="2_bga18"]
+[ext_resource type="Script" path="res://scripts/glitch_effect_text.gd" id="2_h42um"]
+[ext_resource type="AudioStream" uid="uid://6tumsupt1s8r" path="res://music/main.mp3" id="2_nm6xr"]
+[ext_resource type="Script" path="res://scripts/menu_music.gd" id="5_6dbr1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0jlr"]
+shader = ExtResource("1_5riud")
+shader_parameter/scanline_intensity = 0.5
+shader_parameter/distortion_strength = 0.1
+shader_parameter/noise_intensity = 0.1
+shader_parameter/color_boost = Vector3(1.1, 1.05, 1.2)
+
+[sub_resource type="Gradient" id="Gradient_snvc8"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8s01i"]
+gradient = SubResource("Gradient_snvc8")
+fill = 1
+fill_from = Vector2(0.481651, 0.509174)
+fill_to = Vector2(0.802752, 0.133028)
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_x6dsr")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a0jlr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0509804, 0.168627, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Background"]
+position = Vector2(959.84, 547.84)
+scale = Vector2(3.86662, 2.17526)
+color = Color(0.337255, 1, 0.596078, 1)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_8s01i")
+texture_scale = 7.76
+
+[node name="TitleText" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -832.0
+offset_top = -248.0
+offset_right = 840.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.716067, 0.0657144, 2.88785e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_i8a48")
+theme_override_font_sizes/font_size = 52
+text = "████████ DEBUGGING REALITY ████████"
+
+[node name="GlitchEffectText" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 120.0
+offset_right = 1664.0
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("2_bga18")
+theme_override_font_sizes/font_size = 50
+text = "starting..."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_h42um")
+
+[node name="GlitchTimer" type="Timer" parent="GlitchEffectText"]
+autostart = true
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nm6xr")
+autoplay = true
+script = ExtResource("5_6dbr1")
+
+[node name="GlitchAnimation" type="AnimationPlayer" parent="."]
+
+[node name="MenuOptions" type="VBoxContainer" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = 20.0
+offset_right = 184.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+theme_override_font_sizes/font_size = 30
+text = "• NEW GAME •"
+
+[node name="SettingsButton" type="Button" parent="MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "• GAME SETTINGS •"
+
+[node name="QuitButton" type="Button" parent="MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "• QUIT GAME •"
+
+[node name="SettingsMenuOptions" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_direction = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 776.0
+offset_top = 560.0
+offset_right = -776.0
+offset_bottom = -408.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="SettingsMenuOptions"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="SettingsMenuOptions/MasterVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "Master Volume "
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="SettingsMenuOptions/MasterVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+value = 100.0
+ticks_on_borders = true
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="SettingsMenuOptions"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="SettingsMenuOptions/SFXVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "Effects Volume "
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="SettingsMenuOptions/SFXVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+ticks_on_borders = true
+
+[node name="PlayerVolumeContainer" type="HBoxContainer" parent="SettingsMenuOptions"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="SettingsMenuOptions/PlayerVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "Player Volume "
+horizontal_alignment = 1
+
+[node name="PlayerSlider" type="HSlider" parent="SettingsMenuOptions/PlayerVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+ticks_on_borders = true
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="SettingsMenuOptions"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="SettingsMenuOptions/FullscreenContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "Fullscreen Mode "
+horizontal_alignment = 1
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsMenuOptions/FullscreenContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="SettingsMenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "• BACK •"
+
+[connection signal="timeout" from="GlitchEffectText/GlitchTimer" to="GlitchEffectText" method="_on_glitch_timer_timeout"]
