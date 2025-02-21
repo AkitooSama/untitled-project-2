@@ -137,3 +137,4 @@ texture_scale = 7.76
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_t5ngl")
 pitch_scale = 2.0
+bus = &"SFX"
