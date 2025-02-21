@@ -18,10 +18,18 @@ func _input(event):
 	if event.is_action_pressed("dailogue"):
 		if not dailogue_played:
 			dailogue_overlay.start_dialogue([
-				{"speaker": 1, "text": "Hey, what's going on?"},
-				{"speaker": 2, "text": "We need to move fast!"},
-				{"speaker": 1, "text": "Alright, let's go!"},
-				{"speaker": 2, "text": "Be careful out there."}
+				{"speaker": 1, "text": "Ugh... my head. What—? Where are we?"},
+				{"speaker": 2, "text": "...This isn't our office."},
+				{"speaker": 1, "text": "Yeah, no kidding. It looks like... a game? But something’s off."},
+				{"speaker": 2, "text": "The air feels... heavy. Like something's broken."},
+				{"speaker": 1, "text": "I feel like I should know this place. But I don’t. It’s just... blank."},
+				{"speaker": 2, "text": "...Me too. But I know you."},
+				{"speaker": 1, "text": "Yeah. I know you too. That’s weird, right?"},
+				{"speaker": 2, "text": "Very."},
+				{"speaker": 1, "text": "Okay, let’s focus. There's gotta be a way forward."},
+				{"speaker": 2, "text": "...The ground. It keeps flickering."},
+				{"speaker": 1, "text": "So does that wall over there. Like it's not finished."},
+				{"speaker": 2, "text": "Then we better be careful. Whatever this place is... it's unstable."}
 			])
 			get_tree().paused = true
 		
