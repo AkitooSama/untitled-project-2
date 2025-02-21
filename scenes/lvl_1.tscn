@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://btlvr1y3yskjy"]
+
+[ext_resource type="Texture2D" uid="uid://b82cc4j0rxw0a" path="res://vsprites/cobbletileset.png" id="1_rj6ft"]
+[ext_resource type="PackedScene" uid="uid://cbh8xd1dph6or" path="res://scenes/player.tscn" id="2_80cjo"]
+[ext_resource type="PackedScene" uid="uid://b47u6pnquo03t" path="res://scenes/platform.tscn" id="3_lkw6f"]
+[ext_resource type="PackedScene" uid="uid://b2of67pys72vi" path="res://scenes/debugger.tscn" id="3_nfmtt"]
+[ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://scenes/pressure_plate.tscn" id="4_bb5nv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3bmu"]
+texture = ExtResource("1_rj6ft")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fgusd"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_u3bmu")
+
+[node name="lvl1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fgusd")
+format = 2
+layer_0/tile_data = PackedInt32Array(65529, 65536, 0, 65530, 65536, 0, 65531, 65536, 0, 65532, 65536, 0, 65533, 65536, 0, 65534, 65536, 0, 65535, 65536, 0, 0, 65536, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 131065, 65536, 1, 131066, 65536, 1, 131067, 65536, 1, 131068, 65536, 1, 131069, 65536, 1, 131070, 65536, 1, 131071, 65536, 1, 65536, 65536, 1, 65537, 65536, 1, 65538, 65536, 1, 65539, 65536, 1, 65540, 65536, 1, 65541, 65536, 1, -196621, 65536, 0, -196620, 65536, 0, -196619, 65536, 0, -196618, 65536, 0, -196617, 65536, 0, -196616, 65536, 0, -131080, 65536, 1, -65544, 65536, 1, -8, 65536, 1, 65528, 65536, 1, 131064, 65536, 1, 65542, 65536, 1, 6, 65536, 0, -262138, 65536, 0, -262137, 65536, 0, -262136, 65536, 0, -262135, 65536, 0, -262134, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_80cjo")]
+position = Vector2(-16, -20)
+is_controlled = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, -7)
+zoom = Vector2(3, 3)
+limit_bottom = 50
+limit_smoothed = true
+
+[node name="Debugger" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("3_nfmtt")]
+player = NodePath("..")
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("3_lkw6f")]
+position = Vector2(-92, -38)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("3_lkw6f")]
+position = Vector2(78, -38)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="PressurePlate" parent="Interactables" instance=ExtResource("4_bb5nv")]
+position = Vector2(-163, -62)
+
+[node name="PressurePlate2" parent="Interactables" instance=ExtResource("4_bb5nv")]
+position = Vector2(136, -62)

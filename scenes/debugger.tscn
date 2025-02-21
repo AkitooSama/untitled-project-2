@@ -30,6 +30,7 @@ scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_16v64")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_mjydg")
