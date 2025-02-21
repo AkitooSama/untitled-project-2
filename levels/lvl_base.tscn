@@ -64,10 +64,6 @@ range_item_cull_mask = 7
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_sjaet")
 
-[node name="Torch2" parent="GameManager/Level" instance=ExtResource("4_qgme3")]
-position = Vector2(104, -9)
-base_scale = 3.0
-
 [node name="Players" type="Node2D" parent="GameManager/Level"]
 position = Vector2(6, -22)
 
@@ -102,7 +98,7 @@ base_scale = 3.0
 position = Vector2(-270, 108)
 
 [node name="Enemy" parent="GameManager/Level/Enemies" instance=ExtResource("5_amj0s")]
-position = Vector2(144, -128)
+position = Vector2(3.05176e-05, -7.62939e-06)
 
 [node name="enemy2" parent="GameManager/Level/Enemies" instance=ExtResource("6_ysvk1")]
 position = Vector2(0, -22)
@@ -115,10 +111,18 @@ position = Vector2(-191, 83)
 [node name="MovingPlatform" parent="GameManager/Level/Interactables" instance=ExtResource("8_o4b0f")]
 position = Vector2(-848, 105)
 
-[node name="end_lvl_trigger" parent="GameManager/Level" node_paths=PackedStringArray("player1", "player2") instance=ExtResource("10_5csj7")]
-position = Vector2(56, -29)
+[node name="Lights" type="Node2D" parent="GameManager/Level"]
+position = Vector2(1, 108)
+
+[node name="WallTorch" parent="GameManager/Level/Lights" instance=ExtResource("4_qgme3")]
+base_scale = 3.0
+
+[node name="end_lvl_trigger" parent="GameManager/Level" node_paths=PackedStringArray("player1", "player2", "torch", "lights") instance=ExtResource("10_5csj7")]
+position = Vector2(61, 107)
 player1 = NodePath("../Players/PlayerOne")
 player2 = NodePath("../Players/PlayerTwo")
+torch = NodePath("../Players/PlayerTwo/Torch")
+lights = NodePath("../Lights")
 
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 position = Vector2(1, -7)
