@@ -134,6 +134,6 @@ blend_mode = 2
 texture = SubResource("GradientTexture2D_48nah")
 texture_scale = 7.76
 
-[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_t5ngl")
 pitch_scale = 2.0
