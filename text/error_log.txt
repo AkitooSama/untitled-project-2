@@ -1,0 +1,423 @@
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ DEBUG TRACEBACK (REALITY_ENGINE v0.0.7α) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■ Initialization Sequence Corrupted ■
+[1.09] WARNING: AIController - FileNotFound
+    Details: Textures loading from non-existent memory.
+[1.13] WARNING: PhysicsEngine - InfiniteLoopDetected
+    Details: AI entities are self-editing code.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[1.22] FATAL: PhysicsEngine - InfiniteLoopDetected
+    Details: Sound system is generating non-audible frequencies.
+[1.23] FATAL: Shadow_Client - NullReferenceException
+    Details: AI entities are self-editing code.
+[1.32] WARNING: PhysicsEngine - RealityAnchorUnstable
+    Details: Dialogue system repeating forbidden phrases.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[1.34] WARNING: AIController - RealityAnchorUnstable
+    Details: Shadow_Client bypassed authentication.
+[1.43] WARNING: MemoryManager - NullReferenceException
+    Details: Physics engine reporting negative mass objects.
+[1.48] ERROR: RealityTextureLoader - InfiniteLoopDetected
+    Details: Textures loading from non-existent memory.
+[1.53] ERROR: WorldCompiler - InfiniteLoopDetected
+    Details: Unexpected behavior in recursive function.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[1.56] ERROR: PhysicsEngine - MemoryLeak
+    Details: Unexpected behavior in recursive function.
+[1.64] WARNING: PhysicsEngine - CausalityViolation
+    Details: AI entities are self-editing code.
+[1.68] WARNING: RealityTextureLoader - MemoryLeak
+    Details: Textures loading from non-existent memory.
+[1.70] ERROR: WorldCompiler - InvalidPointer
+    Details: Time desynchronization: Frames exist before render cycle.
+[1.73] WARNING: AIController - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+[1.77] FATAL: SoundSystem - RealityAnchorUnstable
+    Details: Sound system is generating non-audible frequencies.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[1.80] ERROR: EntityTracker - NullReferenceException
+    Details: Unexpected behavior in recursive function.
+[1.90] WARNING: MemoryManager - InfiniteLoopDetected
+    Details: Unexpected behavior in recursive function.
+[1.98] CRITICAL: SoundSystem - FileNotFound
+    Details: Shadow_Client bypassed authentication.
+[2.04] FATAL: Shadow_Client - MemoryLeak
+    Details: Entities rendering outside expected bounds.
+[2.14] FATAL: PhysicsEngine - SegmentationFault
+    Details: Entities rendering outside expected bounds.
+[2.19] ERROR: Shadow_Client - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[2.27] WARNING: RealityTextureLoader - InvalidPointer
+    Details: Sound system is generating non-audible frequencies.
+[2.29] FATAL: Shadow_Client - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+[2.34] ERROR: RealityTextureLoader - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[2.38] FATAL: MemoryManager - MemoryLeak
+    Details: Time desynchronization: Frames exist before render cycle.
+[2.46] ERROR: EntityTracker - SegmentationFault
+    Details: Player_1 reported collision with unseen object.
+[2.52] WARNING: PhysicsEngine - SegmentationFault
+    Details: Sound system is generating non-audible frequencies.
+[2.55] FATAL: EntityTracker - InvalidPointer
+    Details: Unexpected behavior in recursive function.
+[2.64] CRITICAL: AIController - SegmentationFault
+    Details: Physics engine reporting negative mass objects.
+[2.73] FATAL: Shadow_Client - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+[2.75] WARNING: WorldCompiler - SegmentationFault
+    Details: AI entities are self-editing code.
+[2.80] FATAL: EntityTracker - InfiniteLoopDetected
+    Details: Player_1 reported collision with unseen object.
+[2.84] WARNING: WorldCompiler - InvalidPointer
+    Details: Shadow_Client bypassed authentication.
+[2.86] ERROR: MemoryManager - InvalidPointer
+    Details: Player_1 reported collision with unseen object.
+[2.88] ERROR: PhysicsEngine - InfiniteLoopDetected
+    Details: Textures loading from non-existent memory.
+[2.91] CRITICAL: PhysicsEngine - InvalidPointer
+    Details: Unexpected behavior in recursive function.
+[2.95] FATAL: PhysicsEngine - SegmentationFault
+    Details: Dialogue system repeating forbidden phrases.
+[3.05] WARNING: EntityTracker - NullReferenceException
+    Details: Textures loading from non-existent memory.
+[3.09] WARNING: EntityTracker - MemoryLeak
+    Details: Time desynchronization: Frames exist before render cycle.
+[3.16] WARNING: AIController - InvalidPointer
+    Details: Dialogue system repeating forbidden phrases.
+[3.24] ERROR: PhysicsEngine - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[3.29] ERROR: MemoryManager - MemoryLeak
+    Details: Time desynchronization: Frames exist before render cycle.
+[3.31] FATAL: MemoryManager - NullReferenceException
+    Details: AI entities are self-editing code.
+[3.37] WARNING: PhysicsEngine - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[3.42] WARNING: MemoryManager - InvalidPointer
+    Details: Textures loading from non-existent memory.
+[3.44] CRITICAL: MemoryManager - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[3.49] ERROR: MemoryManager - SegmentationFault
+    Details: Entities rendering outside expected bounds.
+[3.58] WARNING: SoundSystem - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[3.61] WARNING: PhysicsEngine - SegmentationFault
+    Details: Shadow_Client bypassed authentication.
+[3.62] WARNING: PhysicsEngine - NullReferenceException
+    Details: AI entities are self-editing code.
+[3.72] ERROR: AIController - SegmentationFault
+    Details: Player_1 reported collision with unseen object.
+[3.75] FATAL: MemoryManager - RealityAnchorUnstable
+    Details: AI entities are self-editing code.
+[3.83] CRITICAL: MemoryManager - FileNotFound
+    Details: AI entities are self-editing code.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[3.87] FATAL: RealityTextureLoader - SegmentationFault
+    Details: Physics engine reporting negative mass objects.
+[3.96] ERROR: MemoryManager - InvalidPointer
+    Details: Sound system is generating non-audible frequencies.
+[4.05] FATAL: Shadow_Client - FileNotFound
+    Details: Physics engine reporting negative mass objects.
+[4.11] ERROR: Shadow_Client - InfiniteLoopDetected
+    Details: Physics engine reporting negative mass objects.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[4.18] WARNING: AIController - RealityAnchorUnstable
+    Details: Time desynchronization: Frames exist before render cycle.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[4.27] ERROR: EntityTracker - CausalityViolation
+    Details: AI entities are self-editing code.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[4.33] FATAL: WorldCompiler - InvalidPointer
+    Details: Entities rendering outside expected bounds.
+[4.40] ERROR: MemoryManager - MemoryLeak
+    Details: Shadow_Client bypassed authentication.
+[4.49] CRITICAL: RealityTextureLoader - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[4.55] CRITICAL: RealityTextureLoader - MemoryLeak
+    Details: AI entities are self-editing code.
+[4.59] WARNING: WorldCompiler - SegmentationFault
+    Details: Dialogue system repeating forbidden phrases.
+[4.64] WARNING: PhysicsEngine - CausalityViolation
+    Details: Unexpected behavior in recursive function.
+[4.66] FATAL: Shadow_Client - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[4.74] FATAL: RealityTextureLoader - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+[4.82] FATAL: EntityTracker - CausalityViolation
+    Details: Time desynchronization: Frames exist before render cycle.
+[4.88] WARNING: WorldCompiler - CausalityViolation
+    Details: Unexpected behavior in recursive function.
+[4.97] ERROR: RealityTextureLoader - NullReferenceException
+    Details: AI entities are self-editing code.
+[5.07] CRITICAL: EntityTracker - NullReferenceException
+    Details: Entities rendering outside expected bounds.
+[5.11] ERROR: MemoryManager - RealityAnchorUnstable
+    Details: Dialogue system repeating forbidden phrases.
+[5.19] FATAL: AIController - InfiniteLoopDetected
+    Details: AI entities are self-editing code.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[5.27] CRITICAL: AIController - MemoryLeak
+    Details: Dialogue system repeating forbidden phrases.
+[5.28] FATAL: EntityTracker - InfiniteLoopDetected
+    Details: Textures loading from non-existent memory.
+[5.33] CRITICAL: AIController - CausalityViolation
+    Details: Player_1 reported collision with unseen object.
+[5.35] ERROR: PhysicsEngine - InfiniteLoopDetected
+    Details: Time desynchronization: Frames exist before render cycle.
+[5.37] WARNING: MemoryManager - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[5.44] FATAL: PhysicsEngine - CausalityViolation
+    Details: Sound system is generating non-audible frequencies.
+[5.54] WARNING: RealityTextureLoader - RealityAnchorUnstable
+    Details: Entities rendering outside expected bounds.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[5.60] WARNING: MemoryManager - InvalidPointer
+    Details: Textures loading from non-existent memory.
+[5.68] FATAL: WorldCompiler - NullReferenceException
+    Details: Physics engine reporting negative mass objects.
+[5.72] CRITICAL: RealityTextureLoader - InvalidPointer
+    Details: Sound system is generating non-audible frequencies.
+[5.80] FATAL: EntityTracker - NullReferenceException
+    Details: Entities rendering outside expected bounds.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[5.82] CRITICAL: MemoryManager - RealityAnchorUnstable
+    Details: Sound system is generating non-audible frequencies.
+[5.92] CRITICAL: MemoryManager - NullReferenceException
+    Details: AI entities are self-editing code.
+[5.97] WARNING: SoundSystem - MemoryLeak
+    Details: Player_1 reported collision with unseen object.
+[6.02] FATAL: EntityTracker - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[6.07] CRITICAL: WorldCompiler - FileNotFound
+    Details: Sound system is generating non-audible frequencies.
+[6.13] ERROR: EntityTracker - FileNotFound
+    Details: Shadow_Client bypassed authentication.
+[6.18] CRITICAL: EntityTracker - RealityAnchorUnstable
+    Details: Shadow_Client bypassed authentication.
+[6.26] CRITICAL: WorldCompiler - InvalidPointer
+    Details: Unexpected behavior in recursive function.
+[6.32] CRITICAL: RealityTextureLoader - NullReferenceException
+    Details: Sound system is generating non-audible frequencies.
+[6.41] FATAL: SoundSystem - MemoryLeak
+    Details: Player_1 reported collision with unseen object.
+[6.49] ERROR: AIController - FileNotFound
+    Details: Dialogue system repeating forbidden phrases.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[6.54] CRITICAL: AIController - CausalityViolation
+    Details: Player_1 reported collision with unseen object.
+[6.62] CRITICAL: AIController - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[6.65] FATAL: WorldCompiler - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[6.72] ERROR: PhysicsEngine - CausalityViolation
+    Details: Sound system is generating non-audible frequencies.
+[6.74] FATAL: SoundSystem - SegmentationFault
+    Details: Player_1 reported collision with unseen object.
+[6.80] WARNING: SoundSystem - RealityAnchorUnstable
+    Details: Shadow_Client bypassed authentication.
+[6.87] ERROR: AIController - NullReferenceException
+    Details: Player_1 reported collision with unseen object.
+[6.91] FATAL: RealityTextureLoader - MemoryLeak
+    Details: AI entities are self-editing code.
+[6.96] FATAL: SoundSystem - InvalidPointer
+    Details: AI entities are self-editing code.
+[6.98] CRITICAL: Shadow_Client - SegmentationFault
+    Details: Textures loading from non-existent memory.
+[7.02] FATAL: Shadow_Client - InvalidPointer
+    Details: Player_1 reported collision with unseen object.
+[7.10] CRITICAL: EntityTracker - InvalidPointer
+    Details: Entities rendering outside expected bounds.
+[7.14] CRITICAL: WorldCompiler - InvalidPointer
+    Details: Textures loading from non-existent memory.
+[7.22] ERROR: EntityTracker - RealityAnchorUnstable
+    Details: Shadow_Client bypassed authentication.
+[7.31] FATAL: EntityTracker - SegmentationFault
+    Details: Unexpected behavior in recursive function.
+[7.35] WARNING: MemoryManager - FileNotFound
+    Details: Physics engine reporting negative mass objects.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[7.37] WARNING: MemoryManager - RealityAnchorUnstable
+    Details: AI entities are self-editing code.
+[7.45] ERROR: WorldCompiler - InfiniteLoopDetected
+    Details: Time desynchronization: Frames exist before render cycle.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[7.52] CRITICAL: Shadow_Client - MemoryLeak
+    Details: Shadow_Client bypassed authentication.
+[7.57] CRITICAL: PhysicsEngine - InvalidPointer
+    Details: AI entities are self-editing code.
+[7.65] WARNING: EntityTracker - RealityAnchorUnstable
+    Details: Player_1 reported collision with unseen object.
+[7.70] WARNING: WorldCompiler - InfiniteLoopDetected
+    Details: Physics engine reporting negative mass objects.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[7.77] FATAL: SoundSystem - RealityAnchorUnstable
+    Details: Time desynchronization: Frames exist before render cycle.
+[7.81] WARNING: AIController - NullReferenceException
+    Details: Player_1 reported collision with unseen object.
+[7.88] WARNING: AIController - NullReferenceException
+    Details: Textures loading from non-existent memory.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[7.98] FATAL: WorldCompiler - NullReferenceException
+    Details: Entities rendering outside expected bounds.
+[8.06] FATAL: Shadow_Client - SegmentationFault
+    Details: Shadow_Client bypassed authentication.
+[8.14] CRITICAL: EntityTracker - InvalidPointer
+    Details: AI entities are self-editing code.
+[8.17] ERROR: PhysicsEngine - NullReferenceException
+    Details: Sound system is generating non-audible frequencies.
+[8.25] WARNING: RealityTextureLoader - SegmentationFault
+    Details: AI entities are self-editing code.
+[8.32] ERROR: SoundSystem - MemoryLeak
+    Details: Shadow_Client bypassed authentication.
+[8.41] FATAL: PhysicsEngine - NullReferenceException
+    Details: Dialogue system repeating forbidden phrases.
+[8.44] CRITICAL: RealityTextureLoader - FileNotFound
+    Details: Player_1 reported collision with unseen object.
+[8.49] ERROR: SoundSystem - InfiniteLoopDetected
+    Details: Textures loading from non-existent memory.
+[8.52] WARNING: RealityTextureLoader - CausalityViolation
+    Details: Physics engine reporting negative mass objects.
+[8.59] FATAL: PhysicsEngine - CausalityViolation
+    Details: Physics engine reporting negative mass objects.
+
+■■■■■■■■■■■■■■■■ GLITCH DETECTED ■■■■■■■■■■■■■■■■
+[SYSTEM] Time paradox expanding. Recommended action: N/A
+    ██ Attempting self-healing... FAILED
+    ██ Player entities experiencing existential drift
+[8.67] WARNING: AIController - RealityAnchorUnstable
+    Details: Textures loading from non-existent memory.
+[8.74] WARNING: RealityTextureLoader - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[8.77] CRITICAL: WorldCompiler - InvalidPointer
+    Details: Physics engine reporting negative mass objects.
+[8.80] CRITICAL: AIController - RealityAnchorUnstable
+    Details: Unexpected behavior in recursive function.
+[8.83] CRITICAL: PhysicsEngine - FileNotFound
+    Details: Physics engine reporting negative mass objects.
+[8.86] ERROR: RealityTextureLoader - InfiniteLoopDetected
+    Details: Entities rendering outside expected bounds.
+[8.89] FATAL: RealityTextureLoader - CausalityViolation
+    Details: Entities rendering outside expected bounds.
+[8.96] WARNING: SoundSystem - NullReferenceException
+    Details: AI entities are self-editing code.
+[8.99] WARNING: EntityTracker - SegmentationFault
+    Details: Physics engine reporting negative mass objects.
+[9.03] ERROR: RealityTextureLoader - RealityAnchorUnstable
+    Details: Textures loading from non-existent memory.
+[9.09] WARNING: AIController - MemoryLeak
+    Details: Sound system is generating non-audible frequencies.
+[9.16] CRITICAL: PhysicsEngine - FileNotFound
+    Details: Dialogue system repeating forbidden phrases.
+[9.21] FATAL: PhysicsEngine - InfiniteLoopDetected
+    Details: Unexpected behavior in recursive function.
+[9.23] ERROR: SoundSystem - MemoryLeak
+    Details: Entities rendering outside expected bounds.
+[9.25] FATAL: EntityTracker - CausalityViolation
+    Details: Unexpected behavior in recursive function.
+[9.27] ERROR: SoundSystem - SegmentationFault
+    Details: Sound system is generating non-audible frequencies.
+[9.33] CRITICAL: PhysicsEngine - CausalityViolation
+    Details: Time desynchronization: Frames exist before render cycle.
+[9.40] FATAL: EntityTracker - MemoryLeak
+    Details: Unexpected behavior in recursive function.
+[9.48] WARNING: EntityTracker - SegmentationFault
+    Details: Shadow_Client bypassed authentication.
+[9.56] ERROR: AIController - NullReferenceException
+    Details: Physics engine reporting negative mass objects.
+[9.66] FATAL: RealityTextureLoader - InfiniteLoopDetected
+    Details: Sound system is generating non-audible frequencies.
+[9.70] CRITICAL: Shadow_Client - SegmentationFault
+    Details: Sound system is generating non-audible frequencies.
+    ██ Reality corruption spreading...
+    ██ Unknown entities detected in object pool.
+    ██ Recursion depth exceeding safe limits.
+[9.71] WARNING: Shadow_Client - RealityAnchorUnstable
+    Details: Shadow_Client bypassed authentication.
+[9.76] WARNING: EntityTracker - FileNotFound
+    Details: Dialogue system repeating forbidden phrases.
+[9.79] FATAL: WorldCompiler - NullReferenceException
+    Details: Textures loading from non-existent memory.
+[9.81] FATAL: RealityTextureLoader - MemoryLeak
+    Details: Unexpected behavior in recursive function.
+[9.85] CRITICAL: MemoryManager - RealityAnchorUnstable
+    Details: Unexpected behavior in recursive function.
+[9.89] ERROR: AIController - InvalidPointer
+    Details: Textures loading from non-existent memory.
+[9.95] ERROR: EntityTracker - CausalityViolation
+    Details: Shadow_Client bypassed authentication.
+[9.99] WARNING: WorldCompiler - FileNotFound
+    Details: Physics engine reporting negative mass objects.
+[10.01] ERROR: SoundSystem - NullReferenceException
+    Details: Entities rendering outside expected bounds.
+[10.09] WARNING: AIController - SegmentationFault
+    Details: Shadow_Client bypassed authentication.
+[10.18] FATAL: MemoryManager - RealityAnchorUnstable
+    Details: Player_1 reported collision with unseen object.
+[10.27] WARNING: AIController - MemoryLeak
+    Details: Physics engine reporting negative mass objects.
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ FINAL DIAGNOSTIC (BEFORE COLLAPSE) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+[SYSTEM] Last recorded frame before termination.
+    ██ Player_1 status: Consciousness leaking.
+    ██ Exit condition not found.
+    ██ Memory retention: FORCED
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█ ERROR: ██████████ DATA CORRUPTION ██████████ UNREADABLE ██████████ █
+█ SYSTEM FAILURE ██████ [@#%!&* ERROR_CODE: 0xDEAD] ██████ REBOOT █
+█ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+█ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+█ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+█ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ ██ █
+
+[SYSTEM SHUTDOWN] Initiated. Good luck.

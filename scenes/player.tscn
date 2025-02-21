@@ -243,5 +243,5 @@ bus = &"SFX"
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_tgfc7")
-lifetime = 0.5
+lifetime = 0.1
 one_shot = true

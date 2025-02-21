@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 	if player.debug_mode and not is_typing:
 		update_debug_text()
 
-	if Input.is_action_just_pressed("Debug") and player.is_controlled:
+	if Input.is_action_just_pressed("debug") and player.is_controlled:
 		if player.debug_mode:
 			close_debugger()
 			open_debugger_sound.play()
@@ -38,15 +38,15 @@ func _process(_delta: float) -> void:
 			open_debugger_sound.play()
 			
 
-	if Input.is_action_just_pressed("Enter") and player.debug_mode:
+	if Input.is_action_just_pressed("enter") and player.debug_mode:
 		apply_debug_changes()
 		is_typing = false
 		enter_sound.play()
 
 	if is_typing:
-		Input.action_release("Left")
-		Input.action_release("Right")
-		Input.action_release("Jump")
+		Input.action_release("left")
+		Input.action_release("right")
+		Input.action_release("jump")
 
 func open_debugger():
 	player.debug_mode = true

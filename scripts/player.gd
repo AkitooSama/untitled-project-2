@@ -45,7 +45,7 @@ func handle_movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_sound.play()
 		jump_dust.restart()
@@ -53,7 +53,7 @@ func handle_movement(delta):
 		if torch:
 			torch.boost_light()
 
-	var direction = Input.get_axis("Left", "Right")
+	var direction = Input.get_axis("left", "right")
 	velocity.x = direction * SPEED if direction else move_toward(velocity.x, 0, SPEED)
 
 	if direction != 0 and is_on_floor():

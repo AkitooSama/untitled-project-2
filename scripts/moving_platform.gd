@@ -16,8 +16,8 @@ func _process(_delta):
 	speed_scale = codable_vars["Vars"][0]
 	animation_player.speed_scale = speed_scale
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	print("Moving platform detected by debugger!")
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	print("Moving platform removed from debugger!")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwix503rmqj8w"]
+[gd_scene load_steps=12 format=3 uid="uid://dwix503rmqj8w"]
 
 [ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="1_5riud"]
 [ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="1_i8a48"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/glitch_effect_text.gd" id="2_h42um"]
 [ext_resource type="AudioStream" uid="uid://6tumsupt1s8r" path="res://music/main.mp3" id="2_nm6xr"]
 [ext_resource type="Script" path="res://scripts/menu_music.gd" id="5_6dbr1"]
+[ext_resource type="AudioStream" uid="uid://83dd505mf47" path="res://sounds/menu_option_hover.wav" id="8_7mv7u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0jlr"]
 shader = ExtResource("1_5riud")
@@ -87,6 +88,10 @@ autostart = true
 stream = ExtResource("2_nm6xr")
 autoplay = true
 script = ExtResource("5_6dbr1")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7mv7u")
+pitch_scale = 2.0
 
 [node name="GlitchAnimation" type="AnimationPlayer" parent="."]
 

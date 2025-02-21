@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://4ylhtiimr27y"]
+
+[ext_resource type="Script" path="res://scripts/crash_screen.gd" id="1_8m6ow"]
+[ext_resource type="Shader" path="res://shaders/crash_screen.gdshader" id="2_lb4cj"]
+[ext_resource type="AudioStream" uid="uid://c2xklru4spec" path="res://sounds/white-noise-loop.mp3" id="2_svm8o"]
+[ext_resource type="AudioStream" uid="uid://ccilarhfalqsq" path="res://sounds/radio-glitch-sound.mp3" id="3_oe7qk"]
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="3_om7gk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkabu"]
+shader = ExtResource("2_lb4cj")
+shader_parameter/glitch_intensity = null
+shader_parameter/time_offset = null
+shader_parameter/scanline_speed = null
+shader_parameter/scanline_intensity = null
+shader_parameter/time_factor = 1.0
+
+[sub_resource type="Gradient" id="Gradient_60gqk"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_finpg"]
+gradient = SubResource("Gradient_60gqk")
+width = 82
+height = 82
+fill = 1
+fill_from = Vector2(0.505747, 0.494253)
+fill_to = Vector2(0.890805, 0.178161)
+
+[node name="CrashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8m6ow")
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="StaticNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_svm8o")
+bus = &"Music"
+
+[node name="RadioNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oe7qk")
+bus = &"Music"
+
+[node name="GlitchRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fkabu")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ErrorLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.815686, 0.313726, 0.156863, 0.843137)
+theme_override_fonts/font = ExtResource("3_om7gk")
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+justification_flags = 161
+max_lines_visible = 84
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(957, 540.5)
+scale = Vector2(30, 17.1406)
+energy = 2.11
+blend_mode = 2
+texture = SubResource("GradientTexture2D_finpg")
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

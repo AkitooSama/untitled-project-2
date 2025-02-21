@@ -7,6 +7,8 @@ extends Node
 @onready var settings_button = $MenuOptions/SettingsButton
 @onready var quit_button = $MenuOptions/QuitButton
 
+@onready var hover_sound = $HoverSound
+
 @onready var master_slider: HSlider = $SettingsMenuOptions/MasterVolumeContainer/MasterSlider
 @onready var sfx_slider: HSlider = $SettingsMenuOptions/SFXVolumeContainer/SFXSlider
 @onready var player_slider: HSlider = $SettingsMenuOptions/PlayerVolumeContainer/PlayerSlider
@@ -31,11 +33,18 @@ func _ready():
 	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
 	player_slider.value_changed.connect(_on_player_volume_changed)
 
+	for button in buttons:
+		button.mouse_entered.connect(_play_hover_sound)
+
 	_init_audio_sliders()
 
 	fullscreen_toggle.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 
 	buttons[current_index].grab_focus()
+
+func _play_hover_sound():
+	if hover_sound and not hover_sound.playing:
+		hover_sound.play()
 
 func _init_audio_sliders():
 	var master_index = AudioServer.get_bus_index("Master")
@@ -77,7 +86,7 @@ func _input(event):
 		buttons[current_index].emit_signal("pressed")
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/crash_screen.tscn")
 
 func _on_settings_pressed():
 	buttons_container.hide()

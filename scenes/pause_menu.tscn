@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmrk4aivq73o7"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_ntegf"]
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="2_l1nhp"]
+[ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_tln7q"]
+[ext_resource type="Script" path="res://scripts/panel.gd" id="3_hcc60"]
+[ext_resource type="AudioStream" uid="uid://83dd505mf47" path="res://sounds/menu_option_hover.wav" id="3_t5ngl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ji708"]
+shader = ExtResource("2_tln7q")
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/distortion_strength = 0.005
+shader_parameter/noise_intensity = 0.2
+shader_parameter/color_boost = Vector3(1.1, 1.05, 1.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32fai"]
+bg_color = Color(1, 1, 1, 0.666667)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="Gradient" id="Gradient_snvc8"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_48nah"]
+gradient = SubResource("Gradient_snvc8")
+fill = 1
+fill_from = Vector2(0.481651, 0.509174)
+fill_to = Vector2(0.802752, 0.133028)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ntegf")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_ji708")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_32fai")
+script = ExtResource("3_hcc60")
+
+[node name="PauseMenuOptions" type="VBoxContainer" parent="Panel"]
+texture_filter = 1
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 776.0
+offset_top = 548.0
+offset_right = -776.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Panel/PauseMenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l1nhp")
+text = "• RESUME •"
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="Panel/PauseMenuOptions"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="Panel/PauseMenuOptions/MasterVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l1nhp")
+text = "Master Volume "
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Panel/PauseMenuOptions/MasterVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+value = 100.0
+ticks_on_borders = true
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="Panel/PauseMenuOptions"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="Panel/PauseMenuOptions/SFXVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l1nhp")
+text = "Effects Volume "
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Panel/PauseMenuOptions/SFXVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+ticks_on_borders = true
+
+[node name="PlayerVolumeContainer" type="HBoxContainer" parent="Panel/PauseMenuOptions"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="Panel/PauseMenuOptions/PlayerVolumeContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l1nhp")
+text = "Player Volume "
+horizontal_alignment = 1
+
+[node name="PlayerSlider" type="HSlider" parent="Panel/PauseMenuOptions/PlayerVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+ticks_on_borders = true
+
+[node name="QuitButton" type="Button" parent="Panel/PauseMenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l1nhp")
+text = "• QUIT GAME •"
+
+[node name="PointLight2D" type="PointLight2D" parent="Panel"]
+position = Vector2(960, 536)
+scale = Vector2(3.86598, 2.17461)
+color = Color(0.337255, 1, 0.596078, 1)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_48nah")
+texture_scale = 7.76
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t5ngl")
+pitch_scale = 2.0
