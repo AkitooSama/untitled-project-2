@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ukw5085xqfwk"]
+[gd_scene load_steps=15 format=3 uid="uid://ukw5085xqfwk"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_acom4"]
 [ext_resource type="PackedScene" uid="uid://cbh8xd1dph6or" path="res://scenes/player.tscn" id="2_8vg10"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cg1hcbwhopbub" path="res://scenes/enemy_2.tscn" id="6_ysvk1"]
 [ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://scenes/pressure_plate.tscn" id="7_438w1"]
 [ext_resource type="PackedScene" uid="uid://rgxdyndyorla" path="res://scenes/moving_platform.tscn" id="8_o4b0f"]
+[ext_resource type="PackedScene" uid="uid://cvijs6ty7dsbo" path="res://scenes/end_lvl_trigger.tscn" id="10_5csj7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqx3l"]
 texture = ExtResource("2_d8qwt")
@@ -101,6 +102,7 @@ base_scale = 2.0
 position = Vector2(-270, 108)
 
 [node name="Enemy" parent="GameManager/Level/Enemies" instance=ExtResource("5_amj0s")]
+position = Vector2(144, -128)
 
 [node name="enemy2" parent="GameManager/Level/Enemies" instance=ExtResource("6_ysvk1")]
 position = Vector2(0, -22)
@@ -112,6 +114,11 @@ position = Vector2(-191, 83)
 
 [node name="MovingPlatform" parent="GameManager/Level/Interactables" instance=ExtResource("8_o4b0f")]
 position = Vector2(-848, 105)
+
+[node name="end_lvl_trigger" parent="GameManager/Level" node_paths=PackedStringArray("player1", "player2") instance=ExtResource("10_5csj7")]
+position = Vector2(56, -29)
+player1 = NodePath("../Players/PlayerOne")
+player2 = NodePath("../Players/PlayerTwo")
 
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 position = Vector2(1, -7)

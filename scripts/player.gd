@@ -101,3 +101,8 @@ func follow_player(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
+
+func take_damage(amount: int) -> void:
+	print("Damage: ", amount)
+	#play death anim (queue_free() at end of death anim)
+	queue_free()
