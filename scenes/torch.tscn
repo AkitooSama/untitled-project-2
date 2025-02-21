@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://scripts/torch.gd" id="1_88vv0"]
 
 [sub_resource type="Gradient" id="Gradient_wjp7n"]
-offsets = PackedFloat32Array(0.00649351, 0.25974, 0.993506, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.771429, 0.771429, 0.771429, 1, 0.054902, 0.054902, 0.054902, 0, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.00649351, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.054902, 0.054902, 0.054902, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qnkam"]
 gradient = SubResource("Gradient_wjp7n")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
+fill_to = Vector2(0.844828, 0.787356)
 
 [node name="Torch" type="Node2D"]
 script = ExtResource("1_88vv0")
@@ -18,7 +18,7 @@ script = ExtResource("1_88vv0")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -9.75)
 scale = Vector2(3.53125, 3.44531)
-color = Color(1, 0.533333, 0.2, 1)
+color = Color(0.650267, 0.675113, 1, 0.886275)
 energy = 2.6
 blend_mode = 2
 range_z_min = -4096

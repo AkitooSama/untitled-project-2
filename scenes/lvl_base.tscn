@@ -65,7 +65,7 @@ texture = SubResource("GradientTexture2D_sjaet")
 
 [node name="Torch2" parent="GameManager/Level" instance=ExtResource("4_qgme3")]
 position = Vector2(104, -9)
-base_scale = 2.0
+base_scale = 3.0
 
 [node name="Players" type="Node2D" parent="GameManager/Level"]
 position = Vector2(6, -22)
@@ -95,7 +95,7 @@ limit_bottom = 50
 limit_smoothed = true
 
 [node name="Torch" parent="GameManager/Level/Players/PlayerTwo" instance=ExtResource("4_qgme3")]
-base_scale = 2.0
+base_scale = 3.0
 
 [node name="Enemies" type="Node2D" parent="GameManager/Level"]
 position = Vector2(-270, 108)
