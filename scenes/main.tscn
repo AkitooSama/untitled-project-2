@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://jvvl48wutsoi"]
+[gd_scene load_steps=5 format=3 uid="uid://jvvl48wutsoi"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_otam5"]
 [ext_resource type="PackedScene" uid="uid://durjd3bg1556o" path="res://levels/first_ever_level.tscn" id="2_3q8uk"]
+[ext_resource type="PackedScene" uid="uid://dibf3kpwuu3xn" path="res://scenes/dailogue_overlay.tscn" id="4_lfgop"]
 [ext_resource type="PackedScene" uid="uid://bmrk4aivq73o7" path="res://scenes/pause_menu.tscn" id="12_7adnv"]
 
 [node name="Main" type="Node2D"]
@@ -15,3 +16,5 @@ script = ExtResource("1_otam5")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_7adnv")]
+
+[node name="DailogueOverlay" parent="CanvasLayer" instance=ExtResource("4_lfgop")]
