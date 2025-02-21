@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://scenes/pressure_plate.tscn" id="10_aoc3h"]
 [ext_resource type="PackedScene" uid="uid://rgxdyndyorla" path="res://scenes/moving_platform.tscn" id="12_2la5w"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0blh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y04q2"]
 texture = ExtResource("1_ohv1w")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -173,14 +173,14 @@ texture = ExtResource("1_ohv1w")
 
 [sub_resource type="TileSet" id="TileSet_6fpq4"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_p0blh")
+sources/0 = SubResource("TileSetAtlasSource_y04q2")
 
-[sub_resource type="Gradient" id="Gradient_43yaw"]
+[sub_resource type="Gradient" id="Gradient_yibag"]
 offsets = PackedFloat32Array(0, 0.00649351, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.857143, 0.857143, 0.857143, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ts2jc"]
-gradient = SubResource("Gradient_43yaw")
+gradient = SubResource("Gradient_yibag")
 fill = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(1, 0.137615)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://cbh8xd1dph6or"]
+[gd_scene load_steps=35 format=3 uid="uid://cbh8xd1dph6or"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_c52qp"]
 [ext_resource type="Texture2D" uid="uid://bbp71vkr1jk26" path="res://sprites/knight.png" id="2_2y2ji"]
-[ext_resource type="Script" path="res://scripts/HitBox.gd" id="3_7jhp6"]
 [ext_resource type="AudioStream" uid="uid://h2xe0lejqh7g" path="res://sounds/jump.wav" id="4_ofewu"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="4_ypiq1"]
 [ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://sounds/explosion.wav" id="5_7x0et"]
@@ -177,9 +176,6 @@ animations = [{
 radius = 1.66667
 height = 5.33333
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs6w7"]
-size = Vector2(3.25, 11.25)
-
 [sub_resource type="Gradient" id="Gradient_0i13n"]
 offsets = PackedFloat32Array(0, 0.360656, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.573771, 0.573771, 0.573771, 1, 0, 0, 0, 1)
@@ -217,15 +213,6 @@ autoplay = "idle"
 position = Vector2(1, -8)
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_rpiqq")
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 4
-script = ExtResource("3_7jhp6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(7.625, -8)
-shape = SubResource("RectangleShape2D_fs6w7")
-debug_color = Color(0, 0, 0, 0.42)
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_mask = 2

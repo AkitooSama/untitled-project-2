@@ -1,6 +1,5 @@
 extends Node
 
-@onready var score_label: Label = $ScoreLabel
 @onready var player_one: CharacterBody2D = $Level/Players/PlayerOne
 @onready var player_two: CharacterBody2D = $Level/Players/PlayerTwo
 var score = 0
@@ -43,7 +42,3 @@ func toggle_follow_status():
 		return
 
 	current_player.is_following = not current_player.is_following
-
-func add_score():
-	score += 100
-	score_label.text = "score: " + str(score)

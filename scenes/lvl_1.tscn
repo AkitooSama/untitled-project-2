@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2of67pys72vi" path="res://scenes/debugger.tscn" id="3_nfmtt"]
 [ext_resource type="PackedScene" uid="uid://dtqwi5igc4dcj" path="res://scenes/pressure_plate.tscn" id="4_bb5nv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3bmu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvvqa"]
 texture = ExtResource("1_rj6ft")
 0:0/0 = 0
 1:0/0 = 0
@@ -22,7 +22,7 @@ texture = ExtResource("1_rj6ft")
 
 [sub_resource type="TileSet" id="TileSet_fgusd"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_u3bmu")
+sources/0 = SubResource("TileSetAtlasSource_dvvqa")
 
 [node name="lvl1" type="Node2D"]
 
