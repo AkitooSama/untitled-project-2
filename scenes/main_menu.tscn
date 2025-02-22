@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwix503rmqj8w"]
+[gd_scene load_steps=13 format=3 uid="uid://dwix503rmqj8w"]
 
 [ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="1_5riud"]
 [ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="1_i8a48"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://6tumsupt1s8r" path="res://music/main.mp3" id="2_nm6xr"]
 [ext_resource type="Script" path="res://scripts/menu_music.gd" id="5_6dbr1"]
 [ext_resource type="AudioStream" uid="uid://83dd505mf47" path="res://sounds/menu_option_hover.wav" id="8_7mv7u"]
+[ext_resource type="PackedScene" uid="uid://k3pwy3ow2i23" path="res://scenes/level_select_menu.tscn" id="9_7x042"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0jlr"]
 shader = ExtResource("1_5riud")
@@ -43,8 +44,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PointLight2D" type="PointLight2D" parent="Background"]
-position = Vector2(959.84, 547.84)
-scale = Vector2(3.86662, 2.17526)
+position = Vector2(959.84, 544)
+scale = Vector2(3.86662, 2.19072)
 color = Color(0.337255, 1, 0.596078, 1)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_8s01i")
@@ -95,8 +96,6 @@ stream = ExtResource("8_7mv7u")
 pitch_scale = 2.0
 bus = &"SFX"
 
-[node name="GlitchAnimation" type="AnimationPlayer" parent="."]
-
 [node name="MenuOptions" type="VBoxContainer" parent="."]
 texture_filter = 1
 anchors_preset = 8
@@ -117,6 +116,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i8a48")
 theme_override_font_sizes/font_size = 30
 text = "• NEW GAME •"
+
+[node name="LevelsButton" type="Button" parent="MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8a48")
+text = "• LEVELS •"
 
 [node name="SettingsButton" type="Button" parent="MenuOptions"]
 layout_mode = 2
@@ -204,5 +208,18 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i8a48")
 text = "• BACK •"
+
+[node name="LevelSelectMenu" parent="." instance=ExtResource("9_7x042")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -156.0
+offset_right = 228.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="GlitchEffectText/GlitchTimer" to="GlitchEffectText" method="_on_glitch_timer_timeout"]

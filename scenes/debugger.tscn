@@ -39,8 +39,7 @@ offset_bottom = 518.0
 color = Color(0, 0.180392, 0, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/ColorRect"]
-position = Vector2(960.5, 156)
-scale = Vector2(29.9844, 4.65625)
+scale = Vector2(3, 3)
 color = Color(3.51354e-06, 0.509346, 0.171578, 1)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_ixa03")

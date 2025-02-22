@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://k3pwy3ow2i23"]
+
+[ext_resource type="Script" path="res://scripts/level_select_menu.gd" id="1_ahcj3"]
+[ext_resource type="AudioStream" uid="uid://83dd505mf47" path="res://sounds/menu_option_hover.wav" id="1_cswfh"]
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="2_ay8nh"]
+
+[node name="LevelSelectMenu" type="VBoxContainer"]
+offset_right = 600.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ahcj3")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelButton_1" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 1 •"
+
+[node name="LevelButton_2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 2 •"
+
+[node name="LevelButton_3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 3 •"
+
+[node name="LevelButton_4" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 4 •"
+
+[node name="LevelButton_5" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 5 •"
+
+[node name="LevelButton_6" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 6 •"
+
+[node name="LevelButton_7" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 7 •"
+
+[node name="LevelButton_8" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 8 •"
+
+[node name="LevelButton_9" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• LEVEL 9 •"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_cswfh")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ay8nh")
+text = "• BACK •"

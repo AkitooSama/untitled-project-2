@@ -12,12 +12,17 @@ extends Control
 
 @onready var hover_sound: AudioStreamPlayer = $HoverSound
 
+const SAVE_PATH = "user://savegame.json"
+
 var is_paused = false
 var fade_speed = 4.0
 var game_manager
 
+var save_data = {}
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	load_save_data()
 	game_manager = get_parent().get_parent().find_child("GameManager", true, false)
 	
 	resume_button.pressed.connect(_on_resume_pressed)
@@ -37,6 +42,48 @@ func _ready():
 	background.modulate.a = 0.0
 	panel.modulate.a = 0.0
 
+func load_save_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		var content = file.get_as_text()
+		if content:
+			save_data = JSON.parse_string(content)
+		else :
+			{
+			"unlocked_levels": [],
+			"player_progress": {"last_level": 0},
+			"settings": {
+				"master_volume": 0.6,
+				"effects_volume": 0.3,
+				"player_volume": 0.4,
+				"fullscreen": true
+				}
+			}
+		file.close()
+	else:
+		save_data = {
+			"unlocked_levels": [],
+			"player_progress": {"last_level": 0},
+			"settings": {
+				"master_volume": 0.6,
+				"effects_volume": 0.3,
+				"player_volume": 0.4,
+				"fullscreen": true
+			}
+		}
+		save_to_file()
+
+func save_to_file():
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_data, "\t"))
+	file.close()
+
+func save_settings():
+	save_data["settings"]["master_volume"] = master_slider.value
+	save_data["settings"]["effects_volume"] = sfx_slider.value
+	save_data["settings"]["player_volume"] = player_slider.value
+	save_to_file()
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		_toggle_pause()
@@ -49,6 +96,7 @@ func _toggle_pause():
 		_sync_with_camera()
 		_show_pause_menu()
 	else:
+		save_settings()
 		_hide_pause_menu() 
  
 func _sync_with_camera():

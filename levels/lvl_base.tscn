@@ -68,7 +68,7 @@ texture = SubResource("GradientTexture2D_sjaet")
 position = Vector2(6, -22)
 
 [node name="PlayerOne" parent="GameManager/Level/Players" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_8vg10")]
-position = Vector2(-16, -4)
+position = Vector2(-64, -3)
 follow_target = NodePath("../PlayerTwo")
 
 [node name="Camera2D" type="Camera2D" parent="GameManager/Level/Players/PlayerOne"]

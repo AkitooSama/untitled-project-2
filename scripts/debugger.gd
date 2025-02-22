@@ -15,13 +15,13 @@ var is_typing = false
 func _ready():
 	if player == null:
 		queue_free()
-
+		
 	prompt_txt.text_changed.connect(_on_text_changed)
 
 func _process(_delta: float) -> void:
 	if player == null or player.debug_mode == null:
 		return  
-
+	
 	if not player.is_controlled and player.debug_mode:
 		close_debugger()
 		open_debugger_sound.play()

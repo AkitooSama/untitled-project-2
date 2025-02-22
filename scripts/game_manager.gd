@@ -1,15 +1,48 @@
 extends Node
 
+const SAVE_PATH = "user://savegame.json"
+
 @onready var player_one: CharacterBody2D = $Level/Players/PlayerOne
 @onready var player_two: CharacterBody2D = $Level/Players/PlayerTwo
-@onready var dailogue_overlay: Node2D = $"../CanvasLayer/DailogueOverlay"
+@onready var dailogue_overlay: Node2D = get_parent().find_child("DailogueOverlay", true, false)
 
 var score = 0
 var dailogue_played: bool = false
 var current_player
+var save_data = {}
 
 func _ready():
+	update_progress(1)
 	set_controlled_player(player_one)
+
+func update_progress(new_last_level: int):
+	var save_data = load_save_data()
+	
+	if not save_data:
+		save_data = {
+			"unlocked_levels": [],
+			"player_progress": {"last_level": 0},
+			"settings": {
+				"master_volume": 0.6,
+				"effects_volume": 0.3,
+				"player_volume": 0.4,
+				"fullscreen": true
+			}
+		}
+	
+	save_data["player_progress"]["last_level"] = new_last_level
+	
+	if new_last_level not in save_data["unlocked_levels"]:
+		save_data["unlocked_levels"].append(new_last_level)
+	
+	save_to_file(save_data)
+
+func load_save_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		var content = file.get_as_text()
+		save_data = JSON.parse_string(content)
+		file.close()
 
 func _input(event):
 	if event.is_action_pressed("switch_player"):
@@ -35,6 +68,12 @@ func _input(event):
 		
 	elif event.is_action_pressed("toggle_follow"):
 		toggle_follow_status()
+
+func save_to_file(save_data):
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(save_data, "\t"))
+		file.close()
 
 func switch_player():
 	if current_player:

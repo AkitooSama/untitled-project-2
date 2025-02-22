@@ -28,11 +28,11 @@ func generate_glitch_ascii(input_text: String) -> String:
 	ascii_output.append("█" + "▓".repeat(max_width) + "█")
 	
 	var glitch_line = "█ "
-	for char in input_text:
+	for chr in input_text:
 		if randf() < 0.2:
 			glitch_line += ascii_chars[randi() % ascii_chars.size()]
 		else:
-			glitch_line += char
+			glitch_line += chr
 	glitch_line += " █"
 	ascii_output.append(glitch_line)
 

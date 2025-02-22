@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/torch.gd" id="1_88vv0"]
 
-[sub_resource type="Gradient" id="Gradient_wjp7n"]
+[sub_resource type="Gradient" id="Gradient_800s8"]
 offsets = PackedFloat32Array(0.00649351, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.054902, 0.054902, 0.054902, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qnkam"]
-gradient = SubResource("Gradient_wjp7n")
+gradient = SubResource("Gradient_800s8")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.844828, 0.787356)
