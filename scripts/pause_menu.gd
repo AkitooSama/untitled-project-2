@@ -23,6 +23,7 @@ var save_data = {}
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_save_data()
+	_apply_settings()
 	game_manager = get_parent().get_parent().find_child("GameManager", true, false)
 	
 	resume_button.pressed.connect(_on_resume_pressed)
@@ -32,8 +33,6 @@ func _ready():
 	player_slider.value_changed.connect(_on_player_volume_changed)
 	
 	quit_button.pressed.connect(_on_quit_pressed)
-
-	_init_audio_sliders()
 
 	for button in [resume_button, quit_button]:
 		button.mouse_entered.connect(_play_hover_sound)
@@ -48,29 +47,7 @@ func load_save_data():
 		var content = file.get_as_text()
 		if content:
 			save_data = JSON.parse_string(content)
-		else :
-			{
-			"unlocked_levels": [],
-			"player_progress": {"last_level": 0},
-			"settings": {
-				"master_volume": 0.6,
-				"effects_volume": 0.3,
-				"player_volume": 0.4,
-				"fullscreen": true
-				}
-			}
 		file.close()
-	else:
-		save_data = {
-			"unlocked_levels": [],
-			"player_progress": {"last_level": 0},
-			"settings": {
-				"master_volume": 0.6,
-				"effects_volume": 0.3,
-				"player_volume": 0.4,
-				"fullscreen": true
-			}
-		}
 		save_to_file()
 
 func save_to_file():
@@ -110,8 +87,9 @@ func _sync_with_camera():
 
 		visible = true
   
-
 func _show_pause_menu():
+	load_save_data()
+	_apply_settings()
 	visible = true
 	resume_button.grab_focus()
 	_fade_in()
@@ -134,40 +112,39 @@ func _fade_out():
 	return false
 
 func _on_resume_pressed():
+	save_settings()
 	_toggle_pause()
 
 func _on_quit_pressed():
+	save_settings()
 	get_tree().quit()
 
 func _play_hover_sound():
 	if hover_sound and not hover_sound.playing:
 		hover_sound.play()
-		
-func _init_audio_sliders():
-	var master_index = AudioServer.get_bus_index("Master")
-	var sfx_index = AudioServer.get_bus_index("SFX")
-	var player_index = AudioServer.get_bus_index("Player")
 
+func _apply_settings():
+	_apply_audio_settings()
+
+func _apply_audio_settings():	
 	master_slider.min_value = 0.0
 	master_slider.max_value = 1.5
-	master_slider.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
-
+	
 	sfx_slider.min_value = 0.0
 	sfx_slider.max_value = 1.5
-	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_index))
-
+	
 	player_slider.min_value = 0.0
 	player_slider.max_value = 1.5
-	player_slider.value = db_to_linear(AudioServer.get_bus_volume_db(player_index))
+
+	master_slider.value = save_data["settings"]["master_volume"]
+	sfx_slider.value = save_data["settings"]["effects_volume"]
+	player_slider.value = save_data["settings"]["player_volume"]
 
 func _on_master_volume_changed(value):
-	var master_index = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(master_index, linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
 
 func _on_sfx_volume_changed(value):
-	var sfx_index = AudioServer.get_bus_index("SFX")
-	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
 
 func _on_player_volume_changed(value):
-	var player_index = AudioServer.get_bus_index("Player")
-	AudioServer.set_bus_volume_db(player_index, linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Player"), linear_to_db(value))

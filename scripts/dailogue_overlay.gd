@@ -20,6 +20,7 @@ func _ready():
 	_fade_in()
 
 func start_dialogue(dialogue_list: Array):
+	visible = true
 	dialogues = dialogue_list
 	current_index = 0
 	_show_next_line()
@@ -63,7 +64,6 @@ func _fade_in():
 func _fade_out():
 	while color_rect.modulate.a > 0.0:
 		color_rect.modulate.a -= fade_speed * get_process_delta_time()
-		await get_tree().process_frame
-	get_tree().paused = false
+	game_manager.update_progress(1)
 	game_manager.dailogue_played = true
 	queue_free()

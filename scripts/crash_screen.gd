@@ -56,4 +56,4 @@ func pause_shader():
 	glitch_rect.material.set_shader_parameter("time_factor", 0.0)
 
 func _on_transition_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")

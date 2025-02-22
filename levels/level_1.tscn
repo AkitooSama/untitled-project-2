@@ -18,3 +18,4 @@ script = ExtResource("1_rjmvl")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_gsng2")]
 
 [node name="DailogueOverlay" parent="CanvasLayer" instance=ExtResource("4_pf85b")]
+visible = false

@@ -7,15 +7,13 @@ extends VBoxContainer
 
 const SAVE_PATH = "user://savegame.json"
 var unlocked_levels = []
-var save_data = {"unlocked_levels": [1]}
+var save_data = {"unlocked_levels": []}
 var buttons_container
 
 func _ready():
 	print(ProjectSettings.globalize_path("user://savegame.json"))
 	buttons_container = get_parent().find_child("MenuOptions", true, false)
 	load_save_data()
-	print(save_data)
-	print(unlocked_levels)
 	setup_buttons()
 
 	back_button.pressed.connect(_on_back_pressed)
@@ -33,11 +31,14 @@ func load_save_data():
 	else:
 		unlocked_levels = save_data["unlocked_levels"]
 
+	if "unlocked_levels" in save_data and typeof(save_data["unlocked_levels"]) == TYPE_ARRAY:
+		unlocked_levels = save_data["unlocked_levels"]
+		unlocked_levels = unlocked_levels.map(func(x): return int(x))
+
 func setup_buttons():
 	for i in range(1, 10):
 		var button = grid_container.get_node("LevelButton_" + str(i))
 		button.pressed.connect(_on_level_selected.bind(i))
-		
 		if i not in unlocked_levels:
 			button.disabled = true
 			button.modulate = Color(0.5, 0.5, 0.5, 1)

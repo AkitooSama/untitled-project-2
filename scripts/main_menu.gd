@@ -30,6 +30,8 @@ func _ready():
 	
 	if save_data["unlocked_levels"].is_empty():
 		levels_button.hide()
+	else:
+		start_button.text = "• CONTINUE GAME •"
 		
 	buttons = [start_button, levels_button, settings_button, quit_button, back_button]
 	level_select_menu.hide()
@@ -62,8 +64,8 @@ func load_save_data():
 		var content = file.get_as_text()
 		if content:
 			save_data = JSON.parse_string(content)
-		else :
-			{
+		else:
+			save_data = {
 			"unlocked_levels": [],
 			"player_progress": {"last_level": 0},
 			"settings": {
@@ -100,6 +102,8 @@ func _on_start_pressed():
 		get_tree().change_scene_to_file("res://levels/level_%d.tscn" % last_level)
 
 func _on_settings_pressed():
+	load_save_data()
+	_apply_settings()
 	buttons_container.hide()
 	settings_menu.show()
 
@@ -111,9 +115,9 @@ func _on_levels_pressed():
 	level_select_menu.show()
 	
 func _on_back_pressed():
+	save_settings()
 	settings_menu.hide()
 	buttons_container.show()
-	save_settings()
 
 func save_settings():
 	save_data["settings"]["master_volume"] = master_slider.value
