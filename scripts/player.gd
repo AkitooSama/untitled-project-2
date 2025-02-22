@@ -68,7 +68,7 @@ func handle_movement(delta):
 		animated_sprite_2d.flip_h = true
 
 	if is_on_floor():
-		animated_sprite_2d.play("idle" if direction == 0 else "run")
+		animated_sprite_2d.play("idle" if direction == 0 else "walk")
 	else:
 		animated_sprite_2d.play("jump")
 
