@@ -12,7 +12,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wifd"]
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -27)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_mw61o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

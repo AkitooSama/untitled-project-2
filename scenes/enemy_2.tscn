@@ -48,6 +48,7 @@ size = Vector2(12, 8.5)
 size = Vector2(12, 8)
 
 [node name="enemy2" type="Node2D"]
+scale = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
