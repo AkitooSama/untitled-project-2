@@ -95,7 +95,7 @@ func follow_player(delta):
 			velocity.y = JUMP_VELOCITY  
 
 		if is_on_floor():
-			animated_sprite_2d.play("run")
+			animated_sprite_2d.play("walk")
 		else:
 			animated_sprite_2d.play("jump")
 	else:
