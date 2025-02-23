@@ -48,6 +48,8 @@ func load_save_data():
 func _input(event):
 	if event.is_action_pressed("switch_player"):
 		switch_player()
+	elif event.is_action_pressed("toggle_follow"):
+		toggle_follow_status()
 
 	if save_data["unlocked_levels"].is_empty():
 		if event.is_action_pressed("dailogue"):
@@ -67,8 +69,6 @@ func _input(event):
 					{"speaker": 2, "text": "Then we better be careful. Whatever this place is... it's unstable."}
 				])
 		
-	elif event.is_action_pressed("toggle_follow"):
-		toggle_follow_status()
 
 func save_to_file():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -103,4 +103,4 @@ func toggle_follow_status():
 	if not current_player:
 		return
 
-	current_player.is_following = not current_player.is_following
+	current_player.toggle_follow_status()

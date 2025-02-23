@@ -40,6 +40,8 @@ func _ready() -> void:
 	else:
 		animated_sprite_2.hide()
 		animated_sprite_2d = animated_sprite_1
+		
+	update_visual_state()
 
 func _physics_process(delta: float) -> void:
 	if is_typing:
@@ -52,11 +54,16 @@ func _physics_process(delta: float) -> void:
 		jump_dust.emitting = true
 		was_in_air = false
 
+	if not is_on_floor():
+		velocity += get_gravity() * delta  
+
 	if is_controlled:
 		handle_movement(delta)
 		camera.make_current()
 	elif is_following:
 		follow_player(delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)  
 
 	move_and_slide()
 
@@ -125,6 +132,7 @@ func follow_player(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
 
+
 func take_damage(amount: int) -> void:
 	dead = true
 	footstep_sound.stop()
@@ -143,3 +151,17 @@ func update_torch_position():
 	var floating_offset = Vector2(0, sin(time_elapsed * levitate_speed) * levitate_amplitude)
 
 	torch.global_position = torch.global_position.lerp(global_position + target_offset + floating_offset, 0.2)
+
+
+func toggle_follow_status():
+	is_following = !is_following
+	update_visual_state()
+
+	if not is_following:
+		velocity = Vector2.ZERO  
+
+func update_visual_state():
+	if is_following:
+		animated_sprite_2d.modulate = Color(1, 1, 1, 1)
+	else:
+		animated_sprite_2d.modulate = Color(0.5, 0.6, 0.7, 1)

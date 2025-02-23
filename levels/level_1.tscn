@@ -1813,7 +1813,7 @@ position = Vector2(428, -1)
 position = Vector2(-16, -20)
 collision_layer = 18
 follow_target = NodePath("../PlayerTwo")
-is_controlled = true
+is_following = true
 
 [node name="Debugger" parent="GameManager/Level/Players/PlayerOne" node_paths=PackedStringArray("player") instance=ExtResource("5_o884h")]
 player = NodePath("..")
@@ -1828,7 +1828,7 @@ limit_smoothed = true
 position = Vector2(-64, -22)
 collision_layer = 18
 follow_target = NodePath("../PlayerOne")
-is_following = true
+is_controlled = true
 player_2_anims = true
 
 [node name="Torch" parent="GameManager/Level/Players/PlayerTwo" instance=ExtResource("6_ep864")]
