@@ -36,7 +36,7 @@ func load_save_data():
 		unlocked_levels = unlocked_levels.map(func(x): return int(x))
 
 func setup_buttons():
-	for i in range(1, 10):
+	for i in range(1, 3):
 		var button = grid_container.get_node("LevelButton_" + str(i))
 		button.pressed.connect(_on_level_selected.bind(i))
 		if i not in unlocked_levels:

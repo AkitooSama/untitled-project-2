@@ -55,20 +55,18 @@ func _input(event):
 		if event.is_action_pressed("dailogue"):
 			if not dailogue_played:
 				dailogue_overlay.start_dialogue([
-					{"speaker": 1, "text": "Ugh... my head. What—? Where are we?"},
-					{"speaker": 2, "text": "...This isn't our office."},
-					{"speaker": 1, "text": "Yeah, no kidding. It looks like... a game? But something’s off."},
-					{"speaker": 2, "text": "The air feels... heavy. Like something's broken."},
-					{"speaker": 1, "text": "I feel like I should know this place. But I don’t. It’s just... blank."},
-					{"speaker": 2, "text": "...Me too. But I know you."},
-					{"speaker": 1, "text": "Yeah. I know you too. That’s weird, right?"},
+					{"speaker": 1, "text": "...Ugh. My head. What—? Where are we?"},
+					{"speaker": 2, "text": "...This isn’t right. This isn’t our office."},
+					{"speaker": 1, "text": "No kidding. It looks like... a game? But something’s wrong."},
+					{"speaker": 2, "text": "The air feels heavy. Like the world itself is... breaking."},
+					{"speaker": 1, "text": "I feel like I should recognize this place, but I don’t. It’s just... empty."},
+					{"speaker": 2, "text": "...Yeah. Same. But I know *you*."},
+					{"speaker": 1, "text": "I know *you* too. That’s weird, right?"},
 					{"speaker": 2, "text": "Very."},
-					{"speaker": 1, "text": "Okay, let’s focus. There's gotta be a way forward."},
-					{"speaker": 2, "text": "...The ground. It keeps flickering."},
-					{"speaker": 1, "text": "So does that wall over there. Like it's not finished."},
-					{"speaker": 2, "text": "Then we better be careful. Whatever this place is... it's unstable."}
+					{"speaker": 1, "text": "Alright. We need to focus. There has to be a way out of here."},
+					{"speaker": 2, "text": "We better be careful. This whole place... is.."}
 				])
-		
+
 
 func save_to_file():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)

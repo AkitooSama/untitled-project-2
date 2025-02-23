@@ -6,17 +6,17 @@ extends CharacterBody2D
 @export var player_2_anims: bool = false
 
 const SPEED = 270.0
-const JUMP_VELOCITY = -400.0
-const FOLLOW_SPEED_MULTIPLIER = 0.5
+const JUMP_VELOCITY = -600.0
+const FOLLOW_SPEED_MULTIPLIER = 1.0
 const FOLLOW_DISTANCE = 45.0
 
-@onready var footstep_sound: AudioStreamPlayer2D = $SFX/FootStepSound
+@onready var footstep_sound: AudioStreamPlayer = $SFX/FootStepSound
 @onready var jump_dust: GPUParticles2D = $GPUParticles2D
 @onready var animated_sprite_1: AnimatedSprite2D = $AnimatedSprite2D1
 @onready var animated_sprite_2: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var torch: Node2D = $Torch if has_node("Torch") else null
-@onready var jump_sound: AudioStreamPlayer2D = $SFX/JumpSound
-@onready var dying_sound: AudioStreamPlayer2D = $SFX/DyingSound
+@onready var jump_sound: AudioStreamPlayer = $SFX/JumpSound
+@onready var dying_sound: AudioStreamPlayer = $SFX/DyingSound
 @onready var camera: Camera2D = $Camera2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var death_timer: Timer = $DeathTimer

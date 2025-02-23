@@ -128,13 +128,13 @@ func _apply_settings():
 
 func _apply_audio_settings():	
 	master_slider.min_value = 0.0
-	master_slider.max_value = 1.5
+	master_slider.max_value = 1.0
 	
 	sfx_slider.min_value = 0.0
-	sfx_slider.max_value = 1.5
+	sfx_slider.max_value = 1.0
 	
 	player_slider.min_value = 0.0
-	player_slider.max_value = 1.5
+	player_slider.max_value = 1.0
 
 	master_slider.value = save_data["settings"]["master_volume"]
 	sfx_slider.value = save_data["settings"]["effects_volume"]
