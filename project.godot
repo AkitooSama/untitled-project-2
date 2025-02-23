@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Untitled Project 2"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://sprites/icon.svg"
 
