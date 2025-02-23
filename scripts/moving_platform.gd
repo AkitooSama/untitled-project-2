@@ -1,30 +1,23 @@
-extends Node2D
+extends Area2D
 
-@onready var animation_player: AnimationPlayer = $Platform/AnimationPlayer
-@onready var ray_cast_2d_right: RayCast2D = $Platform/RayCast2DRight
-@onready var ray_cast_2d_left: RayCast2D = $Platform/RayCast2DLeft
+@onready var animation_player: AnimationPlayer = $MovingPlatform/AnimationPlayer
 
-var speed_scale: float = 100.0
-var direction: int = 1
+var speed_scale: float = 5.0
 
 var codable_vars = {
 	"Names": ["speed_scale"],
 	"Vars": [speed_scale]
 }
 
-func _process(delta):
-	speed_scale = codable_vars["Vars"][0]
-	position.x += direction * speed_scale * delta
+func _ready():
+	animation_player.speed_scale = speed_scale
 
-	if ray_cast_2d_right.is_colliding():
-		direction = -1
-	elif ray_cast_2d_left.is_colliding():
-		direction = 1
+func _process(_delta):
+	speed_scale = codable_vars["Vars"][0]
+	animation_player.speed_scale = speed_scale
 
 func _on_area_entered(_area: Area2D) -> void:
-	pass
-	#print("Moving platform detected by debugger!")
+	print("Moving platform detected by debugger!")
 
 func _on_area_exited(_area: Area2D) -> void:
-	pass
-	#print("Moving platform removed from debugger!")
+	print("Moving platform removed from debugger!")
