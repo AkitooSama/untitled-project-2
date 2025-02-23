@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc8efaqm7g173"]
+
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="1_g1t3s"]
+[ext_resource type="Script" path="res://scripts/info_box.gd" id="1_rxdw8"]
+
+[node name="InfoBox" type="CanvasLayer"]
+process_mode = 1
+script = ExtResource("1_rxdw8")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="InfoLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_g1t3s")
+horizontal_alignment = 1
+vertical_alignment = 1

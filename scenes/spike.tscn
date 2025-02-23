@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b66cgkwfyqtl"]
+
+[ext_resource type="Script" path="res://scripts/HitBox.gd" id="1_v8urv"]
+[ext_resource type="Texture2D" uid="uid://bqsidtpld10a6" path="res://vsprites/stuff_2.png" id="2_jw60q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oakx"]
+size = Vector2(34, 24)
+
+[node name="Spike" type="Node2D"]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_v8urv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7oakx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jw60q")
+region_enabled = true
+region_rect = Rect2(50.5994, 68.819, 42.2239, 26.8961)

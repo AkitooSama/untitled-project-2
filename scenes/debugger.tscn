@@ -1,12 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2of67pys72vi"]
+[gd_scene load_steps=15 format=3 uid="uid://b2of67pys72vi"]
 
 [ext_resource type="Script" path="res://scripts/debugger.gd" id="1_7emwp"]
+[ext_resource type="Texture2D" uid="uid://b33spqbu0deod" path="res://vsprites/stuff.png" id="2_163fn"]
 [ext_resource type="Shader" path="res://shaders/main_menu.gdshader" id="2_b4vn0"]
 [ext_resource type="FontFile" uid="uid://dhx86ubdfg1bl" path="res://fonts/PixelOperator8.ttf" id="3_6sdr0"]
 [ext_resource type="AudioStream" uid="uid://cd0ayl7n0hy50" path="res://sounds/explosion.wav" id="3_spb2s"]
 [ext_resource type="AudioStream" uid="uid://c36nyerbhy41i" path="res://sounds/boxopen.ogg" id="3_y8740"]
+[ext_resource type="FontFile" uid="uid://dqdbrhegptw07" path="res://fonts/PressStart2P-Regular.ttf" id="5_681m2"]
+[ext_resource type="Texture2D" uid="uid://k03qmayr8m1j" path="res://vsprites/frame.png" id="5_x0vm4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16v64"]
+radius = 8.34
+
+[sub_resource type="Gradient" id="Gradient_y6don"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.411765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w041n"]
+gradient = SubResource("Gradient_y6don")
+fill = 1
+fill_from = Vector2(0.511494, 0.5)
+fill_to = Vector2(0.931035, 0.0517241)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjydg"]
 shader = ExtResource("2_b4vn0")
@@ -16,9 +30,13 @@ shader_parameter/noise_intensity = 0.2
 shader_parameter/color_boost = Vector3(1.1, 1.05, 1.2)
 
 [sub_resource type="Gradient" id="Gradient_tlhce"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ixa03"]
 gradient = SubResource("Gradient_tlhce")
+fill = 1
+fill_from = Vector2(0.522988, 0.505747)
+fill_to = Vector2(0.867816, 0.137931)
 
 [node name="Debugger" type="Area2D"]
 collision_layer = 0
@@ -29,26 +47,70 @@ script = ExtResource("1_7emwp")
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_16v64")
 
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+visible = false
+scale = Vector2(0.188472, 0.190154)
+texture = ExtResource("2_163fn")
+region_enabled = true
+region_rect = Rect2(0, 48.1111, 96.2222, 95.8889)
+
+[node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D/Sprite2D"]
+scale = Vector2(5.30582, 5.25891)
+color = Color(0, 0.580392, 0.580392, 1)
+energy = 1.01
+texture = SubResource("GradientTexture2D_w041n")
+texture_scale = 0.3
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_mjydg")
-offset_right = 1922.0
-offset_bottom = 518.0
-color = Color(0, 0.180392, 0, 1)
+offset_left = 720.0
+offset_top = 152.0
+offset_right = 1264.0
+offset_bottom = 544.0
+color = Color(0.00184827, 0.156994, 0.66019, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/ColorRect"]
-scale = Vector2(3, 3)
-color = Color(3.51354e-06, 0.509346, 0.171578, 1)
+[node name="Frame" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(992, 311)
+scale = Vector2(4.55556, 3.79442)
+texture = ExtResource("5_x0vm4")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 712.0
+offset_top = 64.0
+offset_right = 1256.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("5_681m2")
+theme_override_font_sizes/font_size = 32
+text = "<- DEBUGGER ->  x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer"]
+position = Vector2(992, 348)
+scale = Vector2(8.25, 5.875)
+color = Color(0.0896266, 0.208379, 0.611008, 1)
+energy = 9.1
 blend_mode = 2
 texture = SubResource("GradientTexture2D_ixa03")
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
-offset_right = 1925.0
-offset_bottom = 518.0
+offset_left = 720.0
+offset_top = 152.0
+offset_right = 1264.0
+offset_bottom = 544.0
 theme_override_fonts/font = ExtResource("3_6sdr0")
 theme_override_font_sizes/font_size = 40
+
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1216.0
+offset_top = 72.0
+offset_right = 1264.0
+offset_bottom = 120.0
 
 [node name="SFX" type="Node" parent="."]
 
@@ -67,3 +129,4 @@ bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

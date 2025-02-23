@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvijs6ty7dsbo"]
+
+[ext_resource type="Script" path="res://scripts/end_level_trigger.gd" id="1_b76ka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p7ki"]
+size = Vector2(20, 54)
+
+[node name="EndLevelTrigger" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_b76ka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6p7ki")
+
+[node name="LightsOffTimer" type="Timer" parent="."]
+
+[node name="NextLevelLoadTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="LightsOffTimer" to="." method="_on_lights_off_timer_timeout"]
+[connection signal="timeout" from="NextLevelLoadTimer" to="." method="_on_next_level_load_timer_timeout"]

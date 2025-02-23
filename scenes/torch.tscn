@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy1xk0s30t03n"]
+[gd_scene load_steps=5 format=3 uid="uid://cy1xk0s30t03n"]
 
 [ext_resource type="Script" path="res://scripts/torch.gd" id="1_88vv0"]
+[ext_resource type="Texture2D" uid="uid://bqsidtpld10a6" path="res://vsprites/stuff_2.png" id="2_84t1d"]
 
 [sub_resource type="Gradient" id="Gradient_800s8"]
 offsets = PackedFloat32Array(0.00649351, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.054902, 0.054902, 0.054902, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0.054902, 0.054902, 0.054902, 0.435294)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qnkam"]
 gradient = SubResource("Gradient_800s8")
@@ -13,16 +14,22 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.844828, 0.787356)
 
 [node name="Torch" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_88vv0")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, -9.75)
-scale = Vector2(3.53125, 3.44531)
+position = Vector2(0, -1.33333)
+scale = Vector2(0.0416667, 0.0436191)
 color = Color(0.650267, 0.675113, 1, 0.886275)
-energy = 2.6
-blend_mode = 2
+energy = 4.05
 range_z_min = -4096
 range_z_max = 4096
 range_item_cull_mask = 7
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_qnkam")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_84t1d")
+region_enabled = true
+region_rect = Rect2(49.7779, 96.8888, 40.8889, 47.1112)

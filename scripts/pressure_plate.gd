@@ -3,6 +3,7 @@ signal power_on
 
 @onready var click_sound: AudioStreamPlayer2D = $SFX/ClickSound
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var sprite: Sprite2D = $UnpressedSprite
 
 var sound_played = false
 var power = false  
@@ -21,13 +22,13 @@ func _physics_process(_delta: float) -> void:
 		point_light_2d.enabled = false
 
 func _on_area_entered(_area: Area2D) -> void:
-	print("Player stepped on plate")
 	if not sound_played:
 		click_sound.play()
 		sound_played = true
+		sprite.hide()
 	if power:
 		emit_signal("power_on")
 
 func _on_area_exited(_area: Area2D) -> void:
 	sound_played = false
-	print("Player left plate")
+	sprite.show()

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtqwi5igc4dcj"]
 
 [ext_resource type="Script" path="res://scripts/pressure_plate.gd" id="1_ymn6x"]
-[ext_resource type="Texture2D" uid="uid://bil6l3e1ivwmx" path="res://sprites/platforms.png" id="2_3adbl"]
+[ext_resource type="Texture2D" uid="uid://b33spqbu0deod" path="res://vsprites/stuff.png" id="2_22jf6"]
 [ext_resource type="AudioStream" uid="uid://dcioeoiwmg5qf" path="res://sounds/landing.ogg" id="3_n7k1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3jxn"]
-size = Vector2(3.5, 6)
+size = Vector2(6.33333, 6)
 
 [sub_resource type="Gradient" id="Gradient_cf230"]
 offsets = PackedFloat32Array(0, 0.993506)
@@ -26,16 +26,23 @@ script = ExtResource("1_ymn6x")
 scale = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_c3jxn")
 
-[node name="PressurePlateSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.85, 0.666667)
-texture = ExtResource("2_3adbl")
+[node name="PressedSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.667)
+texture = ExtResource("2_22jf6")
 region_enabled = true
-region_rect = Rect2(-0.0643129, 47.9888, 15.9701, 9.40227)
+region_rect = Rect2(53.9145, 38.9536, 36.1897, 9.21495)
+
+[node name="UnpressedSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.666667)
+texture = ExtResource("2_22jf6")
+region_enabled = true
+region_rect = Rect2(5.66667, 35.9012, 36.7407, 12.2469)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(0.21875, 0.09375)
+position = Vector2(0.333332, 0.166667)
+scale = Vector2(0.322917, 0.0989583)
 enabled = false
+energy = 2.35
 texture = SubResource("GradientTexture2D_pv1x4")
 
 [node name="SFX" type="Node" parent="."]

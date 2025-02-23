@@ -90,7 +90,7 @@ func switch_player():
 
 func set_controlled_player(new_player):
 	if current_player:
-		current_player.is_controlled = false  
+		current_player.is_controlled = false
 		current_player.debug_mode = false
 
 	current_player = new_player

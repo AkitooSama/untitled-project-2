@@ -51,6 +51,8 @@ func _typing_effect(label: Label, text: String):
 		if typing_sound and not typing_sound.playing:
 			typing_sound.play()
 		await get_tree().create_timer(0.05, false).timeout
+		
+	typing_sound.stop()
 
 	await get_tree().create_timer(1.5, false).timeout
 	is_typing = false

@@ -9,6 +9,11 @@ extends Area2D
 @onready var enter_sound: AudioStreamPlayer2D = $SFX/EnterSound
 @onready var open_debugger_sound: AudioStreamPlayer2D = $SFX/OpenDebuggerSound
 
+@onready var collision_shape = $CollisionShape2D
+@onready var sprite : Sprite2D = $CollisionShape2D/Sprite2D
+
+@onready var exit_button: Button = $CanvasLayer/ExitButton
+
 var debugObjList = []
 var is_typing = false
 
@@ -16,6 +21,7 @@ func _ready():
 	if player == null:
 		queue_free()
 		
+	update_sprite_size()
 	prompt_txt.text_changed.connect(_on_text_changed)
 
 func _process(_delta: float) -> void:
@@ -51,11 +57,13 @@ func _process(_delta: float) -> void:
 func open_debugger():
 	player.debug_mode = true
 	prompt.show()
+	sprite.show()
 	update_debug_text()
 
 func close_debugger():
 	player.debug_mode = false
 	prompt.hide()
+	sprite.hide()
 	prompt_txt.text = ""
 	is_typing = false  
 
@@ -136,3 +144,18 @@ func _on_area_exited(area: Area2D) -> void:
 func _on_text_changed():
 	is_typing = true
 	typing_sound.play()
+
+func update_sprite_size():
+	if collision_shape.shape is CircleShape2D:
+		var radius = collision_shape.shape.radius
+		if sprite.texture:
+			var texture_size = sprite.texture.get_size().x / 2.0
+			sprite.scale = Vector2.ONE * (radius / texture_size)
+
+			sprite.position = collision_shape.position + Vector2(0, -2)
+
+
+func _on_exit_button_pressed() -> void:
+		close_debugger()
+		open_debugger_sound.play()
+	
