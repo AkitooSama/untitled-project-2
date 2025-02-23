@@ -78,7 +78,9 @@ func save_to_file():
 
 func switch_player():
 	if current_player:
-		current_player.is_controlled = false  
+		current_player.is_controlled = false
+		current_player.velocity = Vector2.ZERO
+		current_player.footstep_sound.stop()
 
 		if current_player.debug_mode:
 			current_player.debug_mode = false
@@ -94,7 +96,8 @@ func set_controlled_player(new_player):
 		current_player.debug_mode = false
 
 	current_player = new_player
-	current_player.is_controlled = true  
+	current_player.is_controlled = true
+	current_player.velocity = Vector2.ZERO
 
 	if current_player.camera:
 		current_player.camera.make_current()

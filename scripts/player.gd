@@ -86,7 +86,7 @@ func handle_movement(delta):
 		var direction = Input.get_axis("left", "right")
 		velocity.x = direction * SPEED if direction else move_toward(velocity.x, 0, SPEED)
 
-		if direction != 0 and is_on_floor():
+		if direction != 0 and is_on_floor() and is_controlled:
 			if not footstep_sound.playing:
 				footstep_sound.play()
 		else:
