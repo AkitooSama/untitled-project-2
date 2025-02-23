@@ -12,7 +12,7 @@ var current_player
 var save_data = {"unlocked_levels": []}
 
 func _ready():
-	#load_save_data()
+	load_save_data()
 	set_controlled_player(player_one)
 
 func update_progress(new_last_level: int):
